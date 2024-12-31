@@ -1,0 +1,6 @@
+C:\Users\majav\Desktop\CafeManager\CommonUtilities\bin\Debug\CommonUtilities.dll
+C:\Users\majav\Desktop\CafeManager\CommonUtilities\bin\Debug\CommonUtilities.pdb
+C:\Users\majav\Desktop\CafeManager\CommonUtilities\obj\Debug\CommonUtilities.csproj.AssemblyReference.cache
+C:\Users\majav\Desktop\CafeManager\CommonUtilities\obj\Debug\CommonUtilities.csproj.CoreCompileInputs.cache
+C:\Users\majav\Desktop\CafeManager\CommonUtilities\obj\Debug\CommonUtilities.dll
+C:\Users\majav\Desktop\CafeManager\CommonUtilities\obj\Debug\CommonUtilities.pdb
