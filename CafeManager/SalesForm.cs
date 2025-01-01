@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Drawing.Text;
 using System.Linq;
 using System.Text;
@@ -18,13 +19,14 @@ namespace CafeManager
 {
     public partial class SalesForm : Form
     {
-        private readonly DataLoader _dataLoader;
         private readonly CommonUtilities.ControlHelper _controlHelper;
+        private readonly DataLoader _dataLoader;        
         private readonly CafeMenuItemService _cafeMenuItemService;
         private readonly CafeMenuCategoryService _cafeMenuCategoryService;
         private readonly InvoiceService _cafeMenuInvoiceService;
         private readonly InvoiceItemService _cafeMenuInvoiceItemService;
         private readonly CustomerService _customerService;
+        private readonly SettingsService _settingsService;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
         private GroupBox groupBox3;
@@ -56,15 +58,17 @@ namespace CafeManager
         private int invoiceID;
         private int customerID;
 
-        public SalesForm(CafeMenuItemService cafeMenuItemService, CafeMenuCategoryService cafeMenuCategoryService, InvoiceService cafeMenuInvoiceService, InvoiceItemService cafeMenuInvoiceItemService, CustomerService customerService)
+        public SalesForm(CafeMenuItemService cafeMenuItemService, CafeMenuCategoryService cafeMenuCategoryService, InvoiceService cafeMenuInvoiceService, InvoiceItemService cafeMenuInvoiceItemService, CustomerService customerService, SettingsService settingsService)
         {
             _cafeMenuCategoryService = cafeMenuCategoryService;
             _cafeMenuItemService = cafeMenuItemService;
             _cafeMenuInvoiceService = cafeMenuInvoiceService;
             _cafeMenuInvoiceItemService = cafeMenuInvoiceItemService;
             _customerService = customerService;
-            _dataLoader = new DataLoader(cafeMenuItemService, cafeMenuCategoryService, cafeMenuInvoiceService, cafeMenuInvoiceItemService, customerService);
-            InitializeComponent();            
+            _settingsService = settingsService;
+            _dataLoader = new DataLoader(cafeMenuItemService, cafeMenuCategoryService, cafeMenuInvoiceService, cafeMenuInvoiceItemService, customerService, settingsService);
+            InitializeComponent();
+            _settingsService = settingsService;
         }
 
 
@@ -92,8 +96,12 @@ namespace CafeManager
         }
 
 
+        public void LoadSettings()
+        {
+            var settingsList = _dataLoader.LoadSettings();
+        }
 
-        public static CafeMenuItem ShowItemSizeDialog(List<CafeMenuItem> cafeMenuItems)
+       public static CafeMenuItem ShowItemSizeDialog(List<CafeMenuItem> cafeMenuItems)
         {
             CafeMenuItem selectItem = null; 
 
@@ -471,6 +479,8 @@ namespace CafeManager
                             if (isAdded)
                             {
                                 MessageBox.Show("Invoice is added.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                if (chkPrintCustomer.Checked)
+                                    PrintCustomerInvoce();
                             }
                             else
                             {
@@ -734,7 +744,57 @@ namespace CafeManager
             customerID = 1;
             CreateLayout();
             EnableFormClickOnAllControls(this);
+
+
+           
         }
 
+        public void PrintCustomerInvoce()
+        {
+            var infoShop = _dataLoader.LoadSettings();
+            float dpiX;
+            float dpiY;
+            using (Graphics g = this.CreateGraphics())
+            {
+                dpiX = g.DpiX;
+                dpiY = g.DpiY;
+            }
+
+            string shopLogo = infoShop[4].SettingsValue;
+            string shopName = infoShop[5].SettingsValue;
+            string shopAddress = infoShop[6].SettingsValue;
+            string shopPhone = infoShop[7].SettingsValue;
+            string shopDscription = infoShop[8].SettingsValue;
+
+
+            List<string[]> itemPrint = new List<string[]>();
+
+            for (int i = 0; i < grid1.Rows.Count; i++)
+            {
+                if (grid1.Rows[i].Cells[0].Value != null) 
+                {
+                    string rowIndex = (i + 1).ToString();
+                    string itemName = grid1.Rows[i].Cells["CafeMenuItemCategory"].Value?.ToString() + " " + grid1.Rows[i].Cells["CafeMenuItemName"].Value?.ToString();
+                    string itemSize = grid1.Rows[i].Cells["CafeMenuItemSizeName"].Value?.ToString() ?? "N/A";
+                    string unitPrice = grid1.Rows[i].Cells["CafeMenuItemPrice"].Value?.ToString() ?? "0.00";
+                    string quantity = grid1.Rows[i].Cells["Quantity"].Value?.ToString() ?? "0";
+                    string totalPrice = grid1.Rows[i].Cells["ItemTotalPrice"].Value?.ToString() ?? "0.00";
+
+                    itemPrint.Add(new string[] { rowIndex, itemName, itemSize, unitPrice, quantity, totalPrice });
+                }
+            }
+
+
+            PrintService printer = new PrintService(dpiX, dpiY);
+            printer.SetInvoiceData(shopName, shopAddress, shopPhone, Properties.Resources.cat_hotchok2, itemPrint, txtTotalPrice.Text, shopDscription);
+
+
+            PrintPreviewDialog preview = new PrintPreviewDialog
+            {
+                Document = printer.GetPrintDocument()
+            };
+
+            preview.ShowDialog();
+        }
     }
 }

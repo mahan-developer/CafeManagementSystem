@@ -16,15 +16,17 @@ namespace CafeManager
         private readonly InvoiceService _invoiceService;
         private readonly InvoiceItemService _invoiceItemService;
         private readonly CustomerService _customerService;
+        private readonly SettingsService _settingsService;
 
         public DataLoader(CafeMenuItemService cafeMenuItemService, CafeMenuCategoryService cafeMenuCategoryService,
-            InvoiceService invoiceService, InvoiceItemService invoiceItemService, CustomerService customerService)
+            InvoiceService invoiceService, InvoiceItemService invoiceItemService, CustomerService customerService,SettingsService settingsService)
         {
             _cafeMenuItemService = cafeMenuItemService;
             _cafeMenuCategoryService = cafeMenuCategoryService;
             _invoiceService = invoiceService;
             _invoiceItemService = invoiceItemService;
             _customerService = customerService;
+            _settingsService = settingsService;
         }
 
         public List<T> LoadData<T>(Func<Dictionary<string, object>, List<T>> serviceMethod, Dictionary<string, object> searchParameters, string errorMessage)
@@ -68,6 +70,12 @@ namespace CafeManager
             return LoadData(_cafeMenuItemService.GetCafeMenuItem, new Dictionary<string, object>(), "Error in getting menu items.");
         }
 
+
+        public  List<Settings> LoadSettings()
+        {
+            return LoadData(_settingsService.GetSettingByField, new Dictionary<string, object>(), "Error in getting settings.");
+
+        }
 
         public List<object[]> GetInvoiceItemsForGrid(int invoiceID)
         {

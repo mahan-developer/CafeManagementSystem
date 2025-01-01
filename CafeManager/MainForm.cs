@@ -127,7 +127,7 @@ namespace CafeManager
 
         private void ribbonButton1_Click(object sender, EventArgs e)
         {
-            SalesForm salesForm = new SalesForm(_cafeMenuItemService, _cafeMenuCategoryService, _invoiceService, _invoiceItemService,_customerService);
+            SalesForm salesForm = new SalesForm(_cafeMenuItemService, _cafeMenuCategoryService, _invoiceService, _invoiceItemService,_customerService,_settingsService);
             salesForm.MdiParent = this;
             salesForm.Width = Screen.FromControl(this).WorkingArea.Width - 15;
             salesForm.Height = Screen.FromControl(this).WorkingArea.Height - 160;
