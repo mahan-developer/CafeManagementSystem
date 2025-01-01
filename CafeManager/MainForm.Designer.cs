@@ -32,23 +32,25 @@
             this.rbnMain = new System.Windows.Forms.Ribbon();
             this.rbnTabSales = new System.Windows.Forms.RibbonTab();
             this.rbnPanSale = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButton1 = new System.Windows.Forms.RibbonButton();
             this.rbnTabReports = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel2 = new System.Windows.Forms.RibbonPanel();
             this.rbnTabDefinition = new System.Windows.Forms.RibbonTab();
             this.rbnPanCustomer = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButton2 = new System.Windows.Forms.RibbonButton();
             this.rbnPanMenuItem = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButton3 = new System.Windows.Forms.RibbonButton();
             this.rbnPanItemSize = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButton4 = new System.Windows.Forms.RibbonButton();
             this.rbnPanSizeCategory = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButton5 = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel1 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButton7 = new System.Windows.Forms.RibbonButton();
             this.rbnTabSettings = new System.Windows.Forms.RibbonTab();
             this.rbnPanDatabaseConnection = new System.Windows.Forms.RibbonPanel();
+            this.ribbonPanel3 = new System.Windows.Forms.RibbonPanel();
+            this.ribbonButton1 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton2 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton3 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton4 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton5 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton7 = new System.Windows.Forms.RibbonButton();
             this.ribbonButton6 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton8 = new System.Windows.Forms.RibbonButton();
             this.SuspendLayout();
             // 
             // rbnMain
@@ -94,16 +96,6 @@
             this.rbnPanSale.Name = "rbnPanSale";
             this.rbnPanSale.Text = "Sales";
             // 
-            // ribbonButton1
-            // 
-            this.ribbonButton1.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.Image")));
-            this.ribbonButton1.LargeImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.LargeImage")));
-            this.ribbonButton1.MinimumSize = new System.Drawing.Size(120, 70);
-            this.ribbonButton1.Name = "ribbonButton1";
-            this.ribbonButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.SmallImage")));
-            this.ribbonButton1.Text = "";
-            this.ribbonButton1.Click += new System.EventHandler(this.ribbonButton1_Click);
-            // 
             // rbnTabReports
             // 
             this.rbnTabReports.Name = "rbnTabReports";
@@ -132,6 +124,64 @@
             this.rbnPanCustomer.Name = "rbnPanCustomer";
             this.rbnPanCustomer.Text = "Customer";
             // 
+            // rbnPanMenuItem
+            // 
+            this.rbnPanMenuItem.ButtonMoreVisible = false;
+            this.rbnPanMenuItem.Items.Add(this.ribbonButton3);
+            this.rbnPanMenuItem.Name = "rbnPanMenuItem";
+            this.rbnPanMenuItem.Text = "Menu Items";
+            // 
+            // rbnPanItemSize
+            // 
+            this.rbnPanItemSize.ButtonMoreVisible = false;
+            this.rbnPanItemSize.Items.Add(this.ribbonButton4);
+            this.rbnPanItemSize.Name = "rbnPanItemSize";
+            this.rbnPanItemSize.Text = "Items Size";
+            // 
+            // rbnPanSizeCategory
+            // 
+            this.rbnPanSizeCategory.ButtonMoreVisible = false;
+            this.rbnPanSizeCategory.Items.Add(this.ribbonButton5);
+            this.rbnPanSizeCategory.Name = "rbnPanSizeCategory";
+            this.rbnPanSizeCategory.Text = "Size Category";
+            // 
+            // ribbonPanel1
+            // 
+            this.ribbonPanel1.Items.Add(this.ribbonButton7);
+            this.ribbonPanel1.Name = "ribbonPanel1";
+            this.ribbonPanel1.Text = "Menu Category";
+            // 
+            // rbnTabSettings
+            // 
+            this.rbnTabSettings.Name = "rbnTabSettings";
+            this.rbnTabSettings.Panels.Add(this.rbnPanDatabaseConnection);
+            this.rbnTabSettings.Panels.Add(this.ribbonPanel3);
+            this.rbnTabSettings.Text = "Settings";
+            // 
+            // rbnPanDatabaseConnection
+            // 
+            this.rbnPanDatabaseConnection.ButtonMoreVisible = false;
+            this.rbnPanDatabaseConnection.Items.Add(this.ribbonButton6);
+            this.rbnPanDatabaseConnection.Name = "rbnPanDatabaseConnection";
+            this.rbnPanDatabaseConnection.Text = "Database Connection";
+            // 
+            // ribbonPanel3
+            // 
+            this.ribbonPanel3.ButtonMoreVisible = false;
+            this.ribbonPanel3.Items.Add(this.ribbonButton8);
+            this.ribbonPanel3.Name = "ribbonPanel3";
+            this.ribbonPanel3.Text = "Shop Information";
+            // 
+            // ribbonButton1
+            // 
+            this.ribbonButton1.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.Image")));
+            this.ribbonButton1.LargeImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.LargeImage")));
+            this.ribbonButton1.MinimumSize = new System.Drawing.Size(120, 70);
+            this.ribbonButton1.Name = "ribbonButton1";
+            this.ribbonButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.SmallImage")));
+            this.ribbonButton1.Text = "";
+            this.ribbonButton1.Click += new System.EventHandler(this.ribbonButton1_Click);
+            // 
             // ribbonButton2
             // 
             this.ribbonButton2.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton2.Image")));
@@ -141,13 +191,6 @@
             this.ribbonButton2.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton2.SmallImage")));
             this.ribbonButton2.Text = "";
             this.ribbonButton2.Click += new System.EventHandler(this.ribbonButton2_Click);
-            // 
-            // rbnPanMenuItem
-            // 
-            this.rbnPanMenuItem.ButtonMoreVisible = false;
-            this.rbnPanMenuItem.Items.Add(this.ribbonButton3);
-            this.rbnPanMenuItem.Name = "rbnPanMenuItem";
-            this.rbnPanMenuItem.Text = "Menu Items";
             // 
             // ribbonButton3
             // 
@@ -159,13 +202,6 @@
             this.ribbonButton3.Text = "";
             this.ribbonButton3.Click += new System.EventHandler(this.ribbonButton3_Click);
             // 
-            // rbnPanItemSize
-            // 
-            this.rbnPanItemSize.ButtonMoreVisible = false;
-            this.rbnPanItemSize.Items.Add(this.ribbonButton4);
-            this.rbnPanItemSize.Name = "rbnPanItemSize";
-            this.rbnPanItemSize.Text = "Items Size";
-            // 
             // ribbonButton4
             // 
             this.ribbonButton4.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton4.Image")));
@@ -175,13 +211,6 @@
             this.ribbonButton4.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton4.SmallImage")));
             this.ribbonButton4.Text = "";
             this.ribbonButton4.Click += new System.EventHandler(this.ribbonButton4_Click);
-            // 
-            // rbnPanSizeCategory
-            // 
-            this.rbnPanSizeCategory.ButtonMoreVisible = false;
-            this.rbnPanSizeCategory.Items.Add(this.ribbonButton5);
-            this.rbnPanSizeCategory.Name = "rbnPanSizeCategory";
-            this.rbnPanSizeCategory.Text = "Size Category";
             // 
             // ribbonButton5
             // 
@@ -193,12 +222,6 @@
             this.ribbonButton5.Text = "";
             this.ribbonButton5.Click += new System.EventHandler(this.ribbonButton5_Click);
             // 
-            // ribbonPanel1
-            // 
-            this.ribbonPanel1.Items.Add(this.ribbonButton7);
-            this.ribbonPanel1.Name = "ribbonPanel1";
-            this.ribbonPanel1.Text = "Menu Category";
-            // 
             // ribbonButton7
             // 
             this.ribbonButton7.Image = global::CafeManager.Properties.Resources.menuItemCategory_70px;
@@ -207,19 +230,6 @@
             this.ribbonButton7.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton7.SmallImage")));
             this.ribbonButton7.Text = "";
             this.ribbonButton7.Click += new System.EventHandler(this.ribbonButton7_Click);
-            // 
-            // rbnTabSettings
-            // 
-            this.rbnTabSettings.Name = "rbnTabSettings";
-            this.rbnTabSettings.Panels.Add(this.rbnPanDatabaseConnection);
-            this.rbnTabSettings.Text = "Settings";
-            // 
-            // rbnPanDatabaseConnection
-            // 
-            this.rbnPanDatabaseConnection.ButtonMoreVisible = false;
-            this.rbnPanDatabaseConnection.Items.Add(this.ribbonButton6);
-            this.rbnPanDatabaseConnection.Name = "rbnPanDatabaseConnection";
-            this.rbnPanDatabaseConnection.Text = "Database Connection";
             // 
             // ribbonButton6
             // 
@@ -230,6 +240,16 @@
             this.ribbonButton6.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton6.SmallImage")));
             this.ribbonButton6.Text = "";
             this.ribbonButton6.Click += new System.EventHandler(this.ribbonButton6_Click);
+            // 
+            // ribbonButton8
+            // 
+            this.ribbonButton8.Image = global::CafeManager.Properties.Resources.shop_70px;
+            this.ribbonButton8.LargeImage = global::CafeManager.Properties.Resources.shop_70px;
+            this.ribbonButton8.MinimumSize = new System.Drawing.Size(120, 70);
+            this.ribbonButton8.Name = "ribbonButton8";
+            this.ribbonButton8.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton8.SmallImage")));
+            this.ribbonButton8.Text = "sdfjnsnjdf";
+            this.ribbonButton8.Click += new System.EventHandler(this.ribbonButton8_Click);
             // 
             // MainForm
             // 
@@ -269,6 +289,8 @@
         private System.Windows.Forms.RibbonButton ribbonButton6;
         private System.Windows.Forms.RibbonPanel ribbonPanel1;
         private System.Windows.Forms.RibbonButton ribbonButton7;
+        private System.Windows.Forms.RibbonPanel ribbonPanel3;
+        private System.Windows.Forms.RibbonButton ribbonButton8;
     }
 }
 

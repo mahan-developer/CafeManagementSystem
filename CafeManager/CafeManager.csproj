@@ -120,6 +120,12 @@
     <Compile Include="SalesForm.Designer.cs">
       <DependentUpon>SalesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShopInformationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShopInformationForm.Designer.cs">
+      <DependentUpon>ShopInformationForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,6 +155,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SalesForm.resx">
       <DependentUpon>SalesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShopInformationForm.resx">
+      <DependentUpon>ShopInformationForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -222,6 +231,7 @@
     <None Include="Resources\menuItemCategory_70px.png" />
     <None Include="Resources\newForm_20px.png" />
     <Content Include="Resources\sales.png" />
+    <None Include="Resources\shop_70px.png" />
     <Content Include="Resources\size.png" />
     <None Include="Resources\sizecategory.png" />
   </ItemGroup>

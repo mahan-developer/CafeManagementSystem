@@ -573,6 +573,16 @@ namespace CafeManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap shop_70px {
+            get {
+                object obj = ResourceManager.GetObject("shop_70px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap size {
             get {
                 object obj = ResourceManager.GetObject("size", resourceCulture);

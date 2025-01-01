@@ -133,5 +133,12 @@ namespace CafeManager
             salesForm.Height = Screen.FromControl(this).WorkingArea.Height - 160;
             salesForm.Show();
         }
+
+        private void ribbonButton8_Click(object sender, EventArgs e)
+        {
+            ShopInformationForm shopInformationForm = new ShopInformationForm(_settingsService);
+            shopInformationForm.MdiParent = this;
+            shopInformationForm.Show();
+        }
     }
 }

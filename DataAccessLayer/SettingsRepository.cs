@@ -44,7 +44,7 @@ namespace DataAccessLayer
             new SqlParameter("@Operation", SqlDbType.NVarChar, 10) { Value = "Update" },
             new SqlParameter("@SettingsID", SqlDbType.Int) { Value = settings.SettingsID },
             new SqlParameter("@SettingsKey", SqlDbType.NVarChar, 50) { Value = settings.SettingsKey },
-            new SqlParameter("@SettingsValue", SqlDbType.NVarChar, 50) { Value = settings.SettingsValue }
+            new SqlParameter("@SettingsValue", SqlDbType.NVarChar, 250) { Value = settings.SettingsValue }
         };
 
             try
