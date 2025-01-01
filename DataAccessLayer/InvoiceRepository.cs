@@ -138,8 +138,6 @@ namespace DataAccessLayer
                 {
                     matchingParameter.Value = param.Value;
                 }
-                Console.WriteLine($"Parameter: {matchingParameter.ParameterName}, Value: {matchingParameter.Value}, Type: {matchingParameter.Value?.GetType()}");
-                
             }
 
             try

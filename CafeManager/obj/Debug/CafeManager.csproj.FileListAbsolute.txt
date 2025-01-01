@@ -36,3 +36,4 @@ C:\Users\majav\Desktop\CafeManager\CafeManager\obj\Debug\CafeMana.6A690E32.Up2Da
 C:\Users\majav\Desktop\CafeManager\CafeManager\obj\Debug\CafeManager.exe
 C:\Users\majav\Desktop\CafeManager\CafeManager\obj\Debug\CafeManager.pdb
 C:\Users\majav\Desktop\CafeManager\CafeManager\obj\Debug\CafeManager.ShopInformationForm.resources
+C:\Users\majav\Desktop\CafeManager\CafeManager\obj\Debug\CafeManager.SaleReportForm.resources

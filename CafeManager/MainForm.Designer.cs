@@ -44,6 +44,7 @@
             this.rbnPanDatabaseConnection = new System.Windows.Forms.RibbonPanel();
             this.ribbonPanel3 = new System.Windows.Forms.RibbonPanel();
             this.ribbonButton1 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton9 = new System.Windows.Forms.RibbonButton();
             this.ribbonButton2 = new System.Windows.Forms.RibbonButton();
             this.ribbonButton3 = new System.Windows.Forms.RibbonButton();
             this.ribbonButton4 = new System.Windows.Forms.RibbonButton();
@@ -104,8 +105,10 @@
             // 
             // ribbonPanel2
             // 
+            this.ribbonPanel2.ButtonMoreVisible = false;
+            this.ribbonPanel2.Items.Add(this.ribbonButton9);
             this.ribbonPanel2.Name = "ribbonPanel2";
-            this.ribbonPanel2.Text = "ribbonPanel2";
+            this.ribbonPanel2.Text = "Search invoice";
             // 
             // rbnTabDefinition
             // 
@@ -181,6 +184,16 @@
             this.ribbonButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.SmallImage")));
             this.ribbonButton1.Text = "";
             this.ribbonButton1.Click += new System.EventHandler(this.ribbonButton1_Click);
+            // 
+            // ribbonButton9
+            // 
+            this.ribbonButton9.Image = global::CafeManager.Properties.Resources.search_70px;
+            this.ribbonButton9.LargeImage = global::CafeManager.Properties.Resources.search_70px;
+            this.ribbonButton9.MinimumSize = new System.Drawing.Size(120, 70);
+            this.ribbonButton9.Name = "ribbonButton9";
+            this.ribbonButton9.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton9.SmallImage")));
+            this.ribbonButton9.Text = "";
+            this.ribbonButton9.Click += new System.EventHandler(this.ribbonButton9_Click);
             // 
             // ribbonButton2
             // 
@@ -291,6 +304,7 @@
         private System.Windows.Forms.RibbonButton ribbonButton7;
         private System.Windows.Forms.RibbonPanel ribbonPanel3;
         private System.Windows.Forms.RibbonButton ribbonButton8;
+        private System.Windows.Forms.RibbonButton ribbonButton9;
     }
 }
 

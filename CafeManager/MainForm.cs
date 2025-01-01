@@ -140,5 +140,22 @@ namespace CafeManager
             shopInformationForm.MdiParent = this;
             shopInformationForm.Show();
         }
+
+        private void ribbonButton9_Click(object sender, EventArgs e)
+        {
+            SalesForm saleForm = new SalesForm(_cafeMenuItemService, _cafeMenuCategoryService, _invoiceService, _invoiceItemService, _customerService, _settingsService);
+            SaleReportForm saleReportForm = new SaleReportForm(_invoiceService, saleForm, this);
+            saleReportForm.MdiParent = this;
+            saleReportForm.Show();
+        }
+
+
+        public void ShowSaleFormForEdit(DataGridViewRow selectedRow)
+        {
+            SalesForm salesForm = new SalesForm(_cafeMenuItemService, _cafeMenuCategoryService, _invoiceService, _invoiceItemService, _customerService, _settingsService);
+            salesForm.reportGrid = selectedRow;
+            salesForm.ShowDialog();
+        }
+
     }
 }

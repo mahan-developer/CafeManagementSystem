@@ -430,6 +430,7 @@ namespace CafeManager
 
         private async void MenuItemForm_Load(object sender, EventArgs e)
         {
+            
             await LoadCafeMenuCategoryAsync();
             await LoadCafeMenuItemSizeCategoryAsync();
             await LoadCafeMenuItemDataAsync();
@@ -454,41 +455,52 @@ namespace CafeManager
                 }
                 else
                 {
-                    bool isItemavailable = true;
-                    if (rdbIsItemAvailable.Checked)
-                        isItemavailable = true;
-                    else isItemavailable = false;
+                    var searchParameters = new Dictionary<string, object>();
+                    searchParameters.Add("CafeMenuCategoryName", cmbMenuCategory.Text);
+
+                    List<string> cafeMenuItem = await Task.Run(() => _cafeMenuItemService.GetCafeMenuItem(searchParameters).Select(item => item.CafeMenuItemName).Distinct().ToList());
 
 
-
-                    var initialcafeMenuItem = new CafeMenuItem
-                    {
-                        CafeMenuCategoryID = (int)cmbMenuCategory.SelectedValue,
-                        CafeMenuCategoryName = cmbMenuCategory.Text,
-                        CafeMenuItemSizeCategoryID = (int)cmbMenuItemSizeCategory.SelectedValue,
-                        CafeMenuItemSizeCategoryName = cmbMenuItemSizeCategory.Text,
-                        CafeMenuItemSizeID = (int)cmbMenuItemSize.SelectedValue,
-                        CafeMenuItemSizeName = cmbMenuItemSize.Text,
-                        CafeMenuItemName = txtCafeMenuItem.Text,
-                        CafeMenuItemPrice = decimal.Parse(txtCafeMenuItemPrice.Text),
-                        CafeMenuItemIsAvailable = isItemavailable,
-                        CafeMenuItemDescripton = txtCafeMenuItemDescripton.Text,
-                        CafeMenuItemImage = listViewImages.SelectedItems[0].Text
-                    };
-
-
-                    bool isAdded = await Task.Run(() => _cafeMenuItemService.AddCafeMenuItem(initialcafeMenuItem));
-
-                    if (isAdded)
-                    {
-                        MessageBox.Show("New menu item is added.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        await LoadCafeMenuItemDataAsync();
-                        ControlHelper.ClearControlsInContainer(grpCafeMenuItemAdd);
-                    }
+                    if (cafeMenuItem.Count > 19)
+                        MessageBox.Show("You allow to add just 20 items in each category", "Item register Limit", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     else
                     {
-                        MessageBox.Show("Error during add menu item", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                        bool isItemavailable = true;
+                        if (rdbIsItemAvailable.Checked)
+                            isItemavailable = true;
+                        else isItemavailable = false;
+
+
+
+                        var initialcafeMenuItem = new CafeMenuItem
+                        {
+                            CafeMenuCategoryID = (int)cmbMenuCategory.SelectedValue,
+                            CafeMenuCategoryName = cmbMenuCategory.Text,
+                            CafeMenuItemSizeCategoryID = (int)cmbMenuItemSizeCategory.SelectedValue,
+                            CafeMenuItemSizeCategoryName = cmbMenuItemSizeCategory.Text,
+                            CafeMenuItemSizeID = (int)cmbMenuItemSize.SelectedValue,
+                            CafeMenuItemSizeName = cmbMenuItemSize.Text,
+                            CafeMenuItemName = txtCafeMenuItem.Text,
+                            CafeMenuItemPrice = decimal.Parse(txtCafeMenuItemPrice.Text),
+                            CafeMenuItemIsAvailable = isItemavailable,
+                            CafeMenuItemDescripton = txtCafeMenuItemDescripton.Text,
+                            CafeMenuItemImage = listViewImages.SelectedItems[0].Text
+                        };
+
+
+                        bool isAdded = await Task.Run(() => _cafeMenuItemService.AddCafeMenuItem(initialcafeMenuItem));
+
+                        if (isAdded)
+                        {
+                            MessageBox.Show("New menu item is added.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            await LoadCafeMenuItemDataAsync();
+                            ControlHelper.ClearControlsInContainer(grpCafeMenuItemAdd);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error during add menu item", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }                   
                 }
             }
             catch (Exception)

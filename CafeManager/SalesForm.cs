@@ -57,7 +57,9 @@ namespace CafeManager
         private DateTime invoiceDate;
         private int invoiceID;
         private int customerID;
+        private bool isModal;
 
+        public DataGridViewRow reportGrid;
         public SalesForm(CafeMenuItemService cafeMenuItemService, CafeMenuCategoryService cafeMenuCategoryService, InvoiceService cafeMenuInvoiceService, InvoiceItemService cafeMenuInvoiceItemService, CustomerService customerService, SettingsService settingsService)
         {
             _cafeMenuCategoryService = cafeMenuCategoryService;
@@ -72,6 +74,31 @@ namespace CafeManager
         }
 
 
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            isModal = this.Modal;
+            if (this.Modal)
+            {
+                ConfigureFormForEdit();
+                btnNew.Visible = false;
+
+                SetSelectedInvoice(reportGrid);
+                var invoiceItems = _dataLoader.GetInvoiceItemsForGrid(invoiceID);
+
+                grid1.Rows.Clear();
+                foreach (var rowData in invoiceItems)
+                {
+                    grid1.Rows.Add(rowData);
+                }
+            }
+            else
+            {
+
+            }
+        }
+
+     
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
@@ -95,13 +122,14 @@ namespace CafeManager
             }
         }
 
+        
 
         public void LoadSettings()
         {
             var settingsList = _dataLoader.LoadSettings();
         }
 
-       public static CafeMenuItem ShowItemSizeDialog(List<CafeMenuItem> cafeMenuItems)
+       private static CafeMenuItem ShowItemSizeDialog(List<CafeMenuItem> cafeMenuItems)
         {
             CafeMenuItem selectItem = null; 
 
@@ -162,7 +190,7 @@ namespace CafeManager
             if (selectedRow.Cells["PaymentMethod"].Value.ToString() == "Cash")
                 rdbCasch.Checked = true;
             else
-                rdbCard.Checked = true;
+                rdbCard.Checked = false;
 
             chkToGo.Checked = selectedRow.Cells["OrderMode"].Value.ToString() == "ToGo";
 
@@ -207,10 +235,13 @@ namespace CafeManager
 
             txtTodayInvoice.Click += (s, e) =>
             {
-                ControlLoader.SetDropdownPosition(pnlDropdown2, txtTodayInvoice);
-                pnlDropdown2.Visible = true;
-                var todayInvoiceList = _dataLoader.LoadInvoices(DateTime.Now);
-                dgvTodayInvoice.DataSource = todayInvoiceList;
+                if (!isModal)
+                {
+                    ControlLoader.SetDropdownPosition(pnlDropdown2, txtTodayInvoice);
+                    pnlDropdown2.Visible = true;
+                    var todayInvoiceList = _dataLoader.LoadInvoices(DateTime.Now);
+                    dgvTodayInvoice.DataSource = todayInvoiceList;
+                }                
             };
 
 
@@ -395,11 +426,15 @@ namespace CafeManager
 
                         if (isUpdate)
                         {
-                            MessageBox.Show("Invoice is added.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Invoice is updated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (chkPrintCustomer.Checked)
+                                PrintCustomerInvoce();
+                            if (isModal)
+                                this.Dispose();
                         }
                         else
                         {
-                            MessageBox.Show("Error during add invoice", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Error during update invoice", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         CommonUtilities.ControlHelper.ClearControlsInContainer(groupBox3, groupBox4);
                         txtTodayInvoice.Text = "New";
@@ -743,10 +778,7 @@ namespace CafeManager
         {
             customerID = 1;
             CreateLayout();
-            EnableFormClickOnAllControls(this);
-
-
-           
+            EnableFormClickOnAllControls(this);           
         }
 
         public void PrintCustomerInvoce()
