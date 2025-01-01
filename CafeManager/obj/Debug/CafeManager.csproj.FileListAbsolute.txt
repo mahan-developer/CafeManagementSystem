@@ -37,3 +37,5 @@ C:\Users\majav\Desktop\CafeManager\CafeManager\obj\Debug\CafeManager.exe
 C:\Users\majav\Desktop\CafeManager\CafeManager\obj\Debug\CafeManager.pdb
 C:\Users\majav\Desktop\CafeManager\CafeManager\obj\Debug\CafeManager.ShopInformationForm.resources
 C:\Users\majav\Desktop\CafeManager\CafeManager\obj\Debug\CafeManager.SaleReportForm.resources
+C:\Users\majav\Desktop\CafeManager\CafeManager\obj\Debug\CafeManager.GeneralSettingsForm.resources
+C:\Users\majav\Desktop\CafeManager\CafeManager\obj\Debug\CafeManager.LoginForm.resources

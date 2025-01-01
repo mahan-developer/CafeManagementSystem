@@ -59,7 +59,8 @@ namespace BusinessApplicationLayer
                             new Settings { SettingsKey = "CafeName", SettingsValue = "My Cafe" },
                             new Settings { SettingsKey = "CafeAddress", SettingsValue = "Hello 123\n Erkrath 40699" },
                             new Settings { SettingsKey = "PhoneNumber", SettingsValue = "+491223432132" },
-                            new Settings { SettingsKey = "InvoiceDescription", SettingsValue = "All price include applicable taxses.\nThank you for your purchase!" }
+                            new Settings { SettingsKey = "InvoiceDescription", SettingsValue = "All price include applicable taxses.\nThank you for your purchase!" },
+                            new Settings { SettingsKey = "ImageMode", SettingsValue = "Normal" },
 
                         };
 

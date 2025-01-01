@@ -43,6 +43,7 @@
             this.rbnTabSettings = new System.Windows.Forms.RibbonTab();
             this.rbnPanDatabaseConnection = new System.Windows.Forms.RibbonPanel();
             this.ribbonPanel3 = new System.Windows.Forms.RibbonPanel();
+            this.ribbonPanel4 = new System.Windows.Forms.RibbonPanel();
             this.ribbonButton1 = new System.Windows.Forms.RibbonButton();
             this.ribbonButton9 = new System.Windows.Forms.RibbonButton();
             this.ribbonButton2 = new System.Windows.Forms.RibbonButton();
@@ -52,6 +53,7 @@
             this.ribbonButton7 = new System.Windows.Forms.RibbonButton();
             this.ribbonButton6 = new System.Windows.Forms.RibbonButton();
             this.ribbonButton8 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton10 = new System.Windows.Forms.RibbonButton();
             this.SuspendLayout();
             // 
             // rbnMain
@@ -159,6 +161,7 @@
             this.rbnTabSettings.Name = "rbnTabSettings";
             this.rbnTabSettings.Panels.Add(this.rbnPanDatabaseConnection);
             this.rbnTabSettings.Panels.Add(this.ribbonPanel3);
+            this.rbnTabSettings.Panels.Add(this.ribbonPanel4);
             this.rbnTabSettings.Text = "Settings";
             // 
             // rbnPanDatabaseConnection
@@ -174,6 +177,13 @@
             this.ribbonPanel3.Items.Add(this.ribbonButton8);
             this.ribbonPanel3.Name = "ribbonPanel3";
             this.ribbonPanel3.Text = "Shop Information";
+            // 
+            // ribbonPanel4
+            // 
+            this.ribbonPanel4.ButtonMoreVisible = false;
+            this.ribbonPanel4.Items.Add(this.ribbonButton10);
+            this.ribbonPanel4.Name = "ribbonPanel4";
+            this.ribbonPanel4.Text = "General";
             // 
             // ribbonButton1
             // 
@@ -264,10 +274,21 @@
             this.ribbonButton8.Text = "sdfjnsnjdf";
             this.ribbonButton8.Click += new System.EventHandler(this.ribbonButton8_Click);
             // 
+            // ribbonButton10
+            // 
+            this.ribbonButton10.Image = global::CafeManager.Properties.Resources.setting_70px;
+            this.ribbonButton10.LargeImage = global::CafeManager.Properties.Resources.setting_70px;
+            this.ribbonButton10.MinimumSize = new System.Drawing.Size(120, 70);
+            this.ribbonButton10.Name = "ribbonButton10";
+            this.ribbonButton10.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton10.SmallImage")));
+            this.ribbonButton10.Text = "";
+            this.ribbonButton10.Click += new System.EventHandler(this.ribbonButton10_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1462, 786);
             this.Controls.Add(this.rbnMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -275,6 +296,7 @@
             this.KeyPreview = true;
             this.Name = "MainForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.ResumeLayout(false);
@@ -305,6 +327,8 @@
         private System.Windows.Forms.RibbonPanel ribbonPanel3;
         private System.Windows.Forms.RibbonButton ribbonButton8;
         private System.Windows.Forms.RibbonButton ribbonButton9;
+        private System.Windows.Forms.RibbonPanel ribbonPanel4;
+        private System.Windows.Forms.RibbonButton ribbonButton10;
     }
 }
 

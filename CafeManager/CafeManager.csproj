@@ -82,6 +82,12 @@
       <DependentUpon>DatabaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DataLoader.cs" />
+    <Compile Include="GeneralSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneralSettingsForm.Designer.cs">
+      <DependentUpon>GeneralSettingsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ItemSizeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,12 @@
     </Compile>
     <Compile Include="ItemSizeCategoryForm.Designer.cs">
       <DependentUpon>ItemSizeCategoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -139,11 +151,17 @@
     <EmbeddedResource Include="DatabaseForm.resx">
       <DependentUpon>DatabaseForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GeneralSettingsForm.resx">
+      <DependentUpon>GeneralSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ItemSizeForm.resx">
       <DependentUpon>ItemSizeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ItemSizeCategoryForm.resx">
       <DependentUpon>ItemSizeCategoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -223,6 +241,7 @@
     <None Include="Resources\cat_smoothi2.png" />
     <None Include="Resources\cat_smoothi3.png" />
     <None Include="Resources\cat_smoothi4.png" />
+    <None Include="Resources\close_21px.png" />
     <Content Include="Resources\customer.png" />
     <None Include="Resources\db_70px.png" />
     <None Include="Resources\images %281%29.jpg" />
@@ -233,6 +252,8 @@
     <None Include="Resources\editdgw.png" />
     <None Include="Resources\edit.png" />
     <None Include="Resources\edit_20px.png" />
+    <None Include="Resources\HMK190.jpg" />
+    <None Include="Resources\login.jpg" />
     <Content Include="Resources\logo.ico" />
     <None Include="Resources\ManageDB_70px.png" />
     <Content Include="Resources\ManageDB.png" />
@@ -243,6 +264,7 @@
     <Content Include="Resources\sales.png" />
     <None Include="Resources\shop_70px.png" />
     <None Include="Resources\search_70px.png" />
+    <None Include="Resources\setting_70px.png" />
     <Content Include="Resources\size.png" />
     <None Include="Resources\sizecategory.png" />
   </ItemGroup>
