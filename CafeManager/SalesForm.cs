@@ -48,7 +48,7 @@ namespace CafeManager
         private CheckBox chkToGo;
         private CheckBox chkPrintCustomer;
         private CheckBox chkPrintBar;
-        private TextBox textDescription;
+        private TextBox txtDescription;
         private Button btnAdd;
         private Button btnEdit;
         private Button btnNew;
@@ -185,7 +185,7 @@ namespace CafeManager
 
             textCustomer.Text = selectedRow.Cells["CustomerName"].Value.ToString();
             txtTotalPrice.Text = selectedRow.Cells["InvoicePrice"].Value.ToString();
-            textDescription.Text = selectedRow.Cells["InvoiceDescripton"].Value.ToString();
+            txtDescription.Text = selectedRow.Cells["InvoiceDescripton"].Value.ToString();
 
             if (selectedRow.Cells["PaymentMethod"].Value.ToString() == "Cash")
                 rdbCasch.Checked = true;
@@ -354,7 +354,7 @@ namespace CafeManager
                 chkPrintCustomer.Checked = true;
                 chkPrintBar.Checked = true;
                 txtTotalPrice.Text = "0";
-                textDescription.Text = string.Empty;
+                txtDescription.Text = string.Empty;
                 innerTable5.Visible = false;
                 btnAdd.Visible = true;
             };
@@ -392,7 +392,7 @@ namespace CafeManager
                             InvoicePrice = decimal.Parse(txtTotalPrice.Text),
                             PaymentMethod = iscach,
                             OrderMode = orderMode,
-                            InvoiceDescripton = textDescription.Text
+                            InvoiceDescripton = txtDescription.Text
                         };
                         bool isUpdate = await Task.Run(() => _cafeMenuInvoiceService.EditInvoice(initialInvoice));
 
@@ -429,6 +429,8 @@ namespace CafeManager
                             MessageBox.Show("Invoice is updated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             if (chkPrintCustomer.Checked)
                                 PrintCustomerInvoce();
+                            if (chkPrintBar.Checked)
+                                PrintBarInvoce();
                             if (isModal)
                                 this.Dispose();
                         }
@@ -445,7 +447,7 @@ namespace CafeManager
                         chkPrintCustomer.Checked = true;
                         chkPrintBar.Checked = true;
                         txtTotalPrice.Text = "0";
-                        textDescription.Text = string.Empty;
+                        txtDescription.Text = string.Empty;
                     }
                 }
                 catch (Exception)
@@ -488,7 +490,7 @@ namespace CafeManager
                                 InvoicePrice = decimal.Parse(txtTotalPrice.Text),
                                 PaymentMethod = iscach,
                                 OrderMode = orderMode,
-                                InvoiceDescripton = textDescription.Text
+                                InvoiceDescripton = txtDescription.Text
                             };
                             bool isAdded = await Task.Run(() => _cafeMenuInvoiceService.AddInvoice(initialInvoice));
 
@@ -516,6 +518,8 @@ namespace CafeManager
                                 MessageBox.Show("Invoice is added.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 if (chkPrintCustomer.Checked)
                                     PrintCustomerInvoce();
+                                if (chkPrintBar.Checked)
+                                    PrintBarInvoce();
                             }
                             else
                             {
@@ -530,7 +534,7 @@ namespace CafeManager
                             chkPrintCustomer.Checked = true;
                             chkPrintBar.Checked = true;
                             txtTotalPrice.Text = "0";
-                            textDescription.Text = string.Empty;
+                            txtDescription.Text = string.Empty;
                         }
                     }
                     catch (Exception)
@@ -695,7 +699,8 @@ namespace CafeManager
             innerTable4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80));
 
             lblDescription = ControlLoader.CreateLabel("Description", DockStyle.Fill, new Padding(0, 6, 0, 0), ContentAlignment.MiddleLeft, 10, FontStyle.Regular);
-            textDescription = ControlLoader.CreateTextBox("txtInvoiceDescription", DockStyle.Fill, "", false);
+            txtDescription = ControlLoader.CreateTextBox("txtInvoiceDescription", DockStyle.Fill, "", false);
+            txtDescription.MaxLength = 240;
 
             lblAmount = ControlLoader.CreateLabel("Total amount", DockStyle.Fill, new Padding(0, 6, 0, 0), ContentAlignment.MiddleLeft, 10, FontStyle.Regular);
             txtTotalPrice = ControlLoader.CreateTextBox("txtTotalInvoiceAamount", DockStyle.Fill, "0", false);
@@ -726,7 +731,7 @@ namespace CafeManager
             ConfigureGroup4Events();
 
             innerTable4.Controls.Add(lblDescription, 0, 0);
-            innerTable4.Controls.Add(textDescription, 1, 0);
+            innerTable4.Controls.Add(txtDescription, 1, 0);
             innerTable4.Controls.Add(lblAmount, 2, 0);
             innerTable4.Controls.Add(txtTotalPrice, 3, 0);
             innerTable4.Controls.Add(rdbCasch, 4, 0);
@@ -824,6 +829,66 @@ namespace CafeManager
             PrintPreviewDialog preview = new PrintPreviewDialog
             {
                 Document = printer.GetPrintDocument()
+            };
+
+            preview.ShowDialog();
+        }
+
+        public void PrintBarInvoce()
+        {
+          
+            float dpiX;
+            float dpiY;
+            using (Graphics g = this.CreateGraphics())
+            {
+                dpiX = g.DpiX;
+                dpiY = g.DpiY;
+            }
+
+
+            string barDscription = "";
+            if (txtDescription.Text != "")
+            {
+                StringBuilder multiLineDescription = new StringBuilder();
+                int index = 0;
+                while (index < txtDescription.Text.Length)
+                {
+                    int length = Math.Min(70, txtDescription.Text.Length - index);
+                    multiLineDescription.AppendLine(txtDescription.Text.Substring(index, length));
+                    index += length;                   
+                }
+                barDscription = multiLineDescription.ToString();
+            }
+
+            
+
+
+            List<string[]> itemPrint = new List<string[]>();
+
+            for (int i = 0; i < grid1.Rows.Count; i++)
+            {
+                if (grid1.Rows[i].Cells[0].Value != null)
+                {
+                    string rowIndex = (i + 1).ToString();
+                    string itemName = grid1.Rows[i].Cells["CafeMenuItemCategory"].Value?.ToString() + " " + grid1.Rows[i].Cells["CafeMenuItemName"].Value?.ToString();
+                    string itemSize = grid1.Rows[i].Cells["CafeMenuItemSizeName"].Value?.ToString() ?? "N/A";
+                    string unitPrice = grid1.Rows[i].Cells["CafeMenuItemPrice"].Value?.ToString() ?? "0.00";
+                    string quantity = grid1.Rows[i].Cells["Quantity"].Value?.ToString() ?? "0";
+                    string totalPrice = grid1.Rows[i].Cells["ItemTotalPrice"].Value?.ToString() ?? "0.00";
+
+                    itemPrint.Add(new string[] { rowIndex, itemName, itemSize, unitPrice, quantity, totalPrice });
+                }
+            }
+
+
+
+            PrintService printer = new PrintService(dpiX, dpiY);
+            printer.SetInvoiceData("", "", "", null, itemPrint, txtTotalPrice.Text, barDscription);
+
+
+            PrintPreviewDialog preview = new PrintPreviewDialog
+            {
+                Document = printer.GetPrintDocumentBar()
             };
 
             preview.ShowDialog();

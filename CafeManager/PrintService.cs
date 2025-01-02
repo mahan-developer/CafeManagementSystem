@@ -8,6 +8,7 @@ namespace CafeManager
     public class PrintService
     {
         private PrintDocument _printDocument;
+        private PrintDocument _printDocumentBar;
         private List<string[]> _data;
         private string _shopName;
         private string _shopAddress;
@@ -24,11 +25,15 @@ namespace CafeManager
             _printDocument = new PrintDocument();
             _printDocument.PrintPage += PrintDocument_PrintPage;
 
+            _printDocumentBar = new PrintDocument();
+            _printDocumentBar.PrintPage += PrintDocument_PrintPage_Bar;
             _dpiX = dpiX;
             _dpiY = dpiY;
         }
 
         public PrintDocument GetPrintDocument() => _printDocument;
+
+        public PrintDocument GetPrintDocumentBar() => _printDocumentBar;
 
 
         public void SetInvoiceData(string shopName, string shopAddress,string shopPhone, Image logo, List<string[]> data, string total, string description)
@@ -62,7 +67,7 @@ namespace CafeManager
             int col2Width = totalWidth - col1Width;
             graphics.DrawRectangle(pen, startX, startY, col1Width, lineHeight);
             graphics.DrawRectangle(pen, startX + col1Width, startY, col2Width, lineHeight);
-            graphics.DrawString("Date: " + DateTime.Now.ToShortDateString(), font, brush, startX + 2, startY + 2);
+            graphics.DrawString("Date: " + DateTime.Now.ToString(), font, brush, startX + 2, startY + 2);
             graphics.DrawString(_shopName, boldFont, brush, startX + col1Width + 2, startY + 2);
 
             startY += lineHeight;
@@ -152,7 +157,6 @@ namespace CafeManager
                 graphics.DrawRectangle(pen, startX + 260, startY, 42, lineHeight);
                 graphics.DrawString(row[5], boldFont, brush, startX + 262, startY + 2);
 
-
                 startY += lineHeight;
             }
             int descHeight = (int)(10 * _dpiY / 25.4);
@@ -163,6 +167,68 @@ namespace CafeManager
             graphics.DrawString("Total: " + _total, boldFont, brush, startX + col1Width + 2, startY + 2);
 
 
+
+        }
+
+
+
+
+
+        private void PrintDocument_PrintPage_Bar(object sender, PrintPageEventArgs e)
+        {
+            Graphics graphics = e.Graphics;
+            Font font = new Font("Arial", 6);
+            Font boldFont = new Font("Arial", 6, FontStyle.Bold);
+            Brush brush = Brushes.Black;
+            Pen pen = new Pen(Brushes.Black);
+
+            int startX = (int)(5 * _dpiX / 25.4);
+            int startY = (int)(5 * _dpiY / 25.4);
+            int lineHeight = (int)(6 * _dpiY / 25.4);
+
+            int totalWidth = (int)(80 * _dpiX / 25.4);
+
+
+
+            int col1Width = totalWidth / 2;
+            int col2Width = totalWidth - col1Width;
+           
+
+            string[] headers = { "Row", "Item", "Size", "Quantity"};
+            graphics.DrawRectangle(pen, startX, startY, 25, lineHeight);
+            graphics.DrawString(headers[0], boldFont, brush, startX + 2, startY + 2);
+
+            graphics.DrawRectangle(pen, startX + 25, startY, 160, lineHeight);
+            graphics.DrawString(headers[1], boldFont, brush, startX + 27, startY + 2);
+
+            graphics.DrawRectangle(pen, startX + 185, startY, 75, lineHeight);
+            graphics.DrawString(headers[2], boldFont, brush, startX + 187, startY + 2);
+
+            graphics.DrawRectangle(pen, startX + 260, startY, 42, lineHeight);
+            graphics.DrawString(headers[3], boldFont, brush, startX + 262, startY + 2);
+
+            startY += lineHeight;
+
+
+            foreach (var row in _data)
+            {
+                graphics.DrawRectangle(pen, startX, startY, 25, lineHeight);
+                graphics.DrawString(row[0], boldFont, brush, startX + 2, startY + 2);
+
+                graphics.DrawRectangle(pen, startX + 25, startY, 160, lineHeight);
+                graphics.DrawString(row[1], boldFont, brush, startX + 27, startY + 2);
+
+                graphics.DrawRectangle(pen, startX + 185, startY, 75, lineHeight);
+                graphics.DrawString(row[2], boldFont, brush, startX + 187, startY + 2);
+
+                graphics.DrawRectangle(pen, startX + 260, startY, 42, lineHeight);
+                graphics.DrawString(row[4], boldFont, brush, startX + 275, startY + 2);
+
+                startY += lineHeight;
+            }
+            int descHeight = (int)(14 * _dpiY / 25.4);
+            graphics.DrawRectangle(pen, startX, startY, totalWidth, descHeight);
+            graphics.DrawString(_description, font, brush, startX + 2, startY + 2);
 
         }
 
