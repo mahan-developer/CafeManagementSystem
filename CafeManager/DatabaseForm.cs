@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -39,27 +40,36 @@ namespace CafeManager
             {
                 if (!_dbService.CheckSQLServerExists())
                 {
-                    UpdateLabelStatus(label7, "SQL Server is not installed or available.", Color.Red);
+                    UpdateLabelStatus(lblSqlInfo, "SQL Server is not installed or available.", Color.Red);
+                    lblDatabaseInfo.Visible= false;
+                    lblTablesInfo.Visible= false;
                     return;
                 }
+                else
+                {
+                    lblDatabaseInfo.Visible = true;
+                    lblTablesInfo.Visible = true;
+                    groupBox7.Enabled = true;
+                }
+                    groupBox7.Enabled = true;
 
-                UpdateLabelStatus(label7, "SQL Server is available.", Color.Green);
+                UpdateLabelStatus(lblSqlInfo, "SQL Server is available.", Color.Green);
 
                 if (!_dbService.CheckDatabaseExists())
                 {
-                    UpdateLabelStatus(label4, "Database does not exist.", Color.Red);
+                    UpdateLabelStatus(lblDatabaseInfo, "Database does not exist.", Color.Red);
                     return;
                 }
 
-                UpdateLabelStatus(label4, "Database exists.", Color.Green);
+                UpdateLabelStatus(lblDatabaseInfo, "Database exists.", Color.Green);
 
                 if (!_dbService.CheckTablesExist(tableNames))
                 {
-                    UpdateLabelStatus(label8, "Tables do not exist.", Color.Red);
+                    UpdateLabelStatus(lblTablesInfo, "Tables do not exist.", Color.Red);
                     return;
                 }
 
-                UpdateLabelStatus(label8, "Tables exist.", Color.Green);
+                UpdateLabelStatus(lblTablesInfo, "Tables exist.", Color.Green);
                 groupBox9.Enabled = true;
 
                 lblBackupPath.Text = await GetSettingValueAsync(2) ?? "Not set";
@@ -78,7 +88,7 @@ namespace CafeManager
                 if (_dbService.CreateDatabaseIfNotExists())
                 {
                     MessageBox.Show("Database created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    UpdateLabelStatus(label4, "Database exists.", Color.Green);
+                    UpdateLabelStatus(lblDatabaseInfo, "Database exists.", Color.Green);
                 }
                 else
                 {
@@ -124,7 +134,7 @@ namespace CafeManager
                         _dbService.CreateTablesAndProceduresIfNotExists(entityTypes);
                         MessageBox.Show("Tables created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        UpdateLabelStatus(label8, "Tables exist.", Color.Green);
+                        UpdateLabelStatus(lblTablesInfo, "Tables exist.", Color.Green);
                         groupBox9.Enabled = true;
                         _settingsService.AddDefaultSetting();
                         _customerService.AddDefaultCustomer();
@@ -151,7 +161,7 @@ namespace CafeManager
                 {
                     string folderPath = folderDialog.SelectedPath;
                     string backupFileName = $"DatabaseBackup_{DateTime.Now:yyyyMMdd_HHmmss}.bak";
-                    string backupPath = System.IO.Path.Combine(folderPath, backupFileName);
+                    string backupPath = Path.Combine(folderPath, backupFileName);
 
                     try
                     {
@@ -245,6 +255,8 @@ namespace CafeManager
                     };
 
                     await Task.Run(() => _settingsService.EditSetting(setting));
+                    if(!Directory.Exists(lblBackupPath.Text))
+                        Directory.CreateDirectory(lblBackupPath.Text);
                     MessageBox.Show("Auto backup successfully activated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }

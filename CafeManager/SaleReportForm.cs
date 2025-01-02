@@ -43,6 +43,8 @@ namespace CafeManager
 
             dgvInvoicesList.DataSource = filteredInvoiceList;
             dgvInvoicesList.ReadOnly = true;
+            dgvInvoicesList.Columns["CustomerId"].Visible = false;
+            dgvInvoicesList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void SaleReportForm_Load(object sender, EventArgs e)

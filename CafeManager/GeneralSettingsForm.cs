@@ -79,7 +79,8 @@ namespace CafeManager
             filePath = backgroundImagePath;
             if (backgroundImagePath == "null")
             {
-                picPreview.BackgroundImage = Properties.Resources.HMK190;
+                picPreview.BackgroundImage = Properties.Resources.cat_hotchok2;
+                picPreview.BackgroundImageLayout = ImageLayout.Center;
             }
             else
             {
@@ -90,7 +91,8 @@ namespace CafeManager
                 }
                 else
                 {
-                    picPreview.BackgroundImage = Properties.Resources.HMK190;
+                    picPreview.BackgroundImage = Properties.Resources.cat_hotchok2;
+                    picPreview.BackgroundImageLayout = ImageLayout.Center;
                 }
             }
         }

@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,16 +48,38 @@ namespace CafeManager
             _cafeMenuCategoryService = cafeMenuCategoryService;
         }
 
-        public void DeactiveRBN()
+        private void DeactiveRBN()
         {
-
-            if (_dbService.CheckDatabaseExists())
+            if (_dbService.CheckSQLServerExists())
             {
-                if (!_dbService.CheckTablesExist(tableNames))
+                if (_dbService.CheckDatabaseExists())
+                {
+                    if (!_dbService.CheckTablesExist(tableNames))
+                    {
+                        rbnMain.Tabs[0].Enabled = false;
+                        rbnMain.Tabs[1].Enabled = false;
+                        rbnMain.Tabs[2].Enabled = false;
+                        rbnMain.Tabs[4].Enabled = false;
+                        rbBtnShopInformation.Enabled = false;
+                        rbBtnGeneralSetting.Enabled = false;
+                        rbBtnAbout.Enabled = false;
+                        rbnMain.ActiveTab = rbnTabSettings;
+                    }
+                    else
+                    {
+                        loadBackground();
+                        showLoginForm();
+                    }
+                }
+                else
                 {
                     rbnMain.Tabs[0].Enabled = false;
                     rbnMain.Tabs[1].Enabled = false;
                     rbnMain.Tabs[2].Enabled = false;
+                    rbnMain.Tabs[4].Enabled = false;
+                    rbBtnShopInformation.Enabled = false;
+                    rbBtnGeneralSetting.Enabled = false;
+                    rbBtnAbout.Enabled = false;
                     rbnMain.ActiveTab = rbnTabSettings;
                 }
             }
@@ -65,8 +88,14 @@ namespace CafeManager
                 rbnMain.Tabs[0].Enabled = false;
                 rbnMain.Tabs[1].Enabled = false;
                 rbnMain.Tabs[2].Enabled = false;
+                rbnMain.Tabs[4].Enabled = false;
+                rbBtnShopInformation.Enabled = false;
+                rbBtnGeneralSetting.Enabled = false;
+                rbBtnAbout.Enabled = false;
                 rbnMain.ActiveTab = rbnTabSettings;
             }
+
+           
 
         }
         public void ActiveRBN()
@@ -74,24 +103,32 @@ namespace CafeManager
             rbnMain.Tabs[0].Enabled = true;
             rbnMain.Tabs[1].Enabled = true;
             rbnMain.Tabs[2].Enabled = true;
+            rbnMain.Tabs[4].Enabled = true;
+            rbBtnShopInformation.Enabled = true;
+            rbBtnGeneralSetting.Enabled = true;
+            rbBtnAbout.Enabled = true;
             rbnMain.ActiveTab = rbnTabSales;
+            loadBackground();
+            showLoginForm();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void showLoginForm()
         {
-            if(isLogin=="")
+            if (isLogin == "")
             {
-                LoginForm loginForm = new LoginForm(_settingsService);
-                loginForm.Show();
                 this.Visible = false;
+                LoginForm loginForm = new LoginForm(_settingsService);
+                loginForm.Show();                
             }
-           
-                
+        }
+
+        private void loadBackground()
+        {
             string backgroundImagePath = GetSettingValueAsync(4);
             if (backgroundImagePath == "null")
             {
-                this.BackgroundImage = Properties.Resources.HMK190;
-                this.BackgroundImageLayout = ImageLayout.Stretch;
+                this.BackgroundImage = Properties.Resources.cat_hotchok2;
+                this.BackgroundImageLayout = ImageLayout.Center;
             }
             else
             {
@@ -103,31 +140,15 @@ namespace CafeManager
                 }
                 else
                 {
-                    this.BackgroundImage = Properties.Resources.HMK190;
-                    this.BackgroundImageLayout = ImageLayout.Stretch;
+                    this.BackgroundImage = Properties.Resources.cat_hotchok2;
+                    this.BackgroundImageLayout = ImageLayout.Center;
                 }
             }
         }
 
-        private void ribbonButton2_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            CustomerForm customerForm = new CustomerForm(_customerService);
-            customerForm.MdiParent = this;
-            customerForm.Show();
-        }
-
-        private void ribbonButton6_Click(object sender, EventArgs e)
-        {
-            DatabaseForm databaseForm = new DatabaseForm(_dbService, _settingsService, _customerService);
-            databaseForm.MdiParent = this;
-            databaseForm.Show();
-        }
-
-        private void ribbonButton5_Click(object sender, EventArgs e)
-        {
-            ItemSizeCategoryForm databaseForm = new ItemSizeCategoryForm(_cafeMenuItemSizeCategoryService);
-            databaseForm.MdiParent = this;
-            databaseForm.Show();
+            
         }
 
         private void MainForm_Shown(object sender, EventArgs e)
@@ -135,73 +156,12 @@ namespace CafeManager
             DeactiveRBN();
         }
 
-        private void ribbonButton4_Click(object sender, EventArgs e)
-        {
-            ItemSizeForm itemSizeForm = new ItemSizeForm(_cafeMenuItemSizeCategoryService, _cafeMenuItemSizeService);
-            itemSizeForm.MdiParent = this;
-            itemSizeForm.Show();
-        }
-
-        private void ribbonButton7_Click(object sender, EventArgs e)
-        {
-            MenuCategoryForm menuCategoryForm = new MenuCategoryForm(_cafeMenuCategoryService);
-            menuCategoryForm.MdiParent = this;
-            menuCategoryForm.Show();
-        }
-
-        private void ribbonButton3_Click(object sender, EventArgs e)
-        {
-            MenuItemForm menuItemForm = new MenuItemForm(_cafeMenuItemService, _cafeMenuCategoryService, _cafeMenuItemSizeCategoryService, _cafeMenuItemSizeService);
-            menuItemForm.MdiParent = this;
-            menuItemForm.Show();
-        }
-
-        private void ribbonButton1_Click(object sender, EventArgs e)
-        {
-            SalesForm salesForm = new SalesForm(_cafeMenuItemService, _cafeMenuCategoryService, _invoiceService, _invoiceItemService,_customerService,_settingsService);
-            salesForm.MdiParent = this;
-            salesForm.Width = Screen.FromControl(this).WorkingArea.Width - 15;
-            salesForm.Height = Screen.FromControl(this).WorkingArea.Height - 160;
-            salesForm.Show();
-        }
-
-        private void ribbonButton8_Click(object sender, EventArgs e)
-        {
-            ShopInformationForm shopInformationForm = new ShopInformationForm(_settingsService);
-            shopInformationForm.MdiParent = this;
-            shopInformationForm.Show();
-        }
-
-        private void ribbonButton9_Click(object sender, EventArgs e)
-        {
-            SalesForm saleForm = new SalesForm(_cafeMenuItemService, _cafeMenuCategoryService, _invoiceService, _invoiceItemService, _customerService, _settingsService);
-            SaleReportForm saleReportForm = new SaleReportForm(_invoiceService, saleForm, this);
-            saleReportForm.MdiParent = this;
-            saleReportForm.Show();
-        }
-
-
         public void ShowSaleFormForEdit(DataGridViewRow selectedRow)
         {
             SalesForm salesForm = new SalesForm(_cafeMenuItemService, _cafeMenuCategoryService, _invoiceService, _invoiceItemService, _customerService, _settingsService);
             salesForm.reportGrid = selectedRow;
             salesForm.ShowDialog();
         }
-
-       
-
-        private void ribbonButton10_Click(object sender, EventArgs e)
-        {
-            GeneralSettingsForm generalSettingsForm = new GeneralSettingsForm(_settingsService);
-            generalSettingsForm.MdiParent= this;
-            generalSettingsForm.Show();
-            
-        }
-
-
-
-
-
 
         private string GetSettingValueAsync(int settingsId)
         {
@@ -214,38 +174,113 @@ namespace CafeManager
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(GetSettingValueAsync(3) == "true")
+            if (_dbService.CheckSQLServerExists() && _dbService.CheckDatabaseExists() && _dbService.CheckTablesExist(tableNames))
             {
-                string folderPath = GetSettingValueAsync(2);
-                if (Directory.Exists(folderPath))
+                if (GetSettingValueAsync(3) == "true")
                 {
-                    string backupFileName = $"DatabaseBackup_{DateTime.Now:yyyyMMdd_HHmmss}.bak";
-                    string backupPath = System.IO.Path.Combine(folderPath, backupFileName);
-
-                    try
+                    string folderPath = GetSettingValueAsync(2);
+                    if (Directory.Exists(folderPath))
                     {
-                        if (_dbService.BackupDatabase(backupPath))
+                        string backupFileName = $"DatabaseBackup_{DateTime.Now:yyyyMMdd_HHmmss}.bak";
+                        string backupPath = System.IO.Path.Combine(folderPath, backupFileName);
+
+                        try
                         {
-                            MessageBox.Show($"Backup created successfully.\nPath: {backupPath}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (_dbService.BackupDatabase(backupPath))
+                            {
+                                MessageBox.Show($"Backup created successfully.\nPath: {backupPath}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        this.Dispose();
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Directory for save auto backup is not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    this.Dispose();
                 }
-                else
-                {
-                    MessageBox.Show("Directory for save auto backup is not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-
-            
+            }               
                 
         }
 
-        private void ribbonButton11_Click(object sender, EventArgs e)
+
+        private void rbBtnSales_Click(object sender, EventArgs e)
+        {
+            SalesForm salesForm = new SalesForm(_cafeMenuItemService, _cafeMenuCategoryService, _invoiceService, _invoiceItemService, _customerService, _settingsService);
+            salesForm.MdiParent = this;
+            salesForm.Width = Screen.FromControl(this).WorkingArea.Width - 15;
+            salesForm.Height = Screen.FromControl(this).WorkingArea.Height - 160;
+            salesForm.Show();
+        }
+
+        private void rbBtnSearchInvoice_Click(object sender, EventArgs e)
+        {
+            SalesForm saleForm = new SalesForm(_cafeMenuItemService, _cafeMenuCategoryService, _invoiceService, _invoiceItemService, _customerService, _settingsService);
+            SaleReportForm saleReportForm = new SaleReportForm(_invoiceService, saleForm, this);
+            saleReportForm.MdiParent = this;
+            saleReportForm.Show();
+        }
+
+        private void rbBtnCustomerManage_Click(object sender, EventArgs e)
+        {
+            CustomerForm customerForm = new CustomerForm(_customerService);
+            customerForm.MdiParent = this;
+            customerForm.Show();
+        }
+
+        private void rbBtnMenuItemManage_Click(object sender, EventArgs e)
+        {
+            MenuItemForm menuItemForm = new MenuItemForm(_cafeMenuItemService, _cafeMenuCategoryService, _cafeMenuItemSizeCategoryService, _cafeMenuItemSizeService);
+            menuItemForm.MdiParent = this;
+            menuItemForm.Show();
+        }
+
+        private void rbBtnItemSizeManage_Click(object sender, EventArgs e)
+        {
+            ItemSizeForm itemSizeForm = new ItemSizeForm(_cafeMenuItemSizeCategoryService, _cafeMenuItemSizeService);
+            itemSizeForm.MdiParent = this;
+            itemSizeForm.Show();
+        }
+
+        private void rbBtnSizeCategoryManage_Click(object sender, EventArgs e)
+        {
+            ItemSizeCategoryForm databaseForm = new ItemSizeCategoryForm(_cafeMenuItemSizeCategoryService);
+            databaseForm.MdiParent = this;
+            databaseForm.Show();
+        }
+
+        private void rbBtnMenuCategoryManage_Click(object sender, EventArgs e)
+        {
+            MenuCategoryForm menuCategoryForm = new MenuCategoryForm(_cafeMenuCategoryService);
+            menuCategoryForm.MdiParent = this;
+            menuCategoryForm.Show();
+        }
+
+        private void rbBtnDatabaseManage_Click(object sender, EventArgs e)
+        {
+            DatabaseForm databaseForm = new DatabaseForm(_dbService, _settingsService, _customerService);
+            databaseForm.MdiParent = this;
+            databaseForm.Show();
+        }
+
+        private void rbBtnShopInformation_Click(object sender, EventArgs e)
+        {
+            ShopInformationForm shopInformationForm = new ShopInformationForm(_settingsService);
+            shopInformationForm.MdiParent = this;
+            shopInformationForm.Show();
+        }
+
+        private void rbBtnGeneralSetting_Click(object sender, EventArgs e)
+        {
+            GeneralSettingsForm generalSettingsForm = new GeneralSettingsForm(_settingsService);
+            generalSettingsForm.MdiParent = this;
+            generalSettingsForm.Show();
+        }
+
+        private void rbBtnAbout_Click(object sender, EventArgs e)
         {
             AboutForm aboutForm = new AboutForm(_settingsService);
             aboutForm.MdiParent = this;

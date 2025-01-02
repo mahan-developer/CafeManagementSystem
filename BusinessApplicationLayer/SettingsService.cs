@@ -52,14 +52,14 @@ namespace BusinessApplicationLayer
             var initialSettings = new List<Settings>
                         {
                             new Settings { SettingsKey = "Password", SettingsValue = "admin" },
-                            new Settings { SettingsKey = "BackupPath", SettingsValue = @"C:\cafemanager" },
-                            new Settings { SettingsKey = "AutoBackup", SettingsValue = "true" },
+                            new Settings { SettingsKey = "BackupPath", SettingsValue = @"C:\CafeManagerBackup" },
+                            new Settings { SettingsKey = "AutoBackup", SettingsValue = "false" },
                             new Settings { SettingsKey = "BackgroundImage", SettingsValue = "null" },
                             new Settings { SettingsKey = "LogoPath", SettingsValue = "null" },
                             new Settings { SettingsKey = "CafeName", SettingsValue = "My Cafe" },
-                            new Settings { SettingsKey = "CafeAddress", SettingsValue = "Hello 123\n Erkrath 40699" },
+                            new Settings { SettingsKey = "CafeAddress", SettingsValue = "Hello str 123\r\nErkrath 40699" },
                             new Settings { SettingsKey = "PhoneNumber", SettingsValue = "+491223432132" },
-                            new Settings { SettingsKey = "InvoiceDescription", SettingsValue = "All price include applicable taxses.\nThank you for your purchase!" },
+                            new Settings { SettingsKey = "InvoiceDescription", SettingsValue = "All price include applicable taxses.\r\nThank you for your purchase!" },
                             new Settings { SettingsKey = "ImageMode", SettingsValue = "Normal" },
                             new Settings { SettingsKey = "Version", SettingsValue = "1.0.0" }
 

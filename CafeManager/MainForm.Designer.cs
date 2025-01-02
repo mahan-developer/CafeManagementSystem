@@ -32,31 +32,31 @@
             this.rbnMain = new System.Windows.Forms.Ribbon();
             this.rbnTabSales = new System.Windows.Forms.RibbonTab();
             this.rbnPanSale = new System.Windows.Forms.RibbonPanel();
+            this.rbBtnSales = new System.Windows.Forms.RibbonButton();
             this.rbnTabReports = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel2 = new System.Windows.Forms.RibbonPanel();
+            this.rbBtnSearchInvoice = new System.Windows.Forms.RibbonButton();
             this.rbnTabDefinition = new System.Windows.Forms.RibbonTab();
             this.rbnPanCustomer = new System.Windows.Forms.RibbonPanel();
+            this.rbBtnCustomerManage = new System.Windows.Forms.RibbonButton();
             this.rbnPanMenuItem = new System.Windows.Forms.RibbonPanel();
+            this.rbBtnMenuItemManage = new System.Windows.Forms.RibbonButton();
             this.rbnPanItemSize = new System.Windows.Forms.RibbonPanel();
+            this.rbBtnItemSizeManage = new System.Windows.Forms.RibbonButton();
             this.rbnPanSizeCategory = new System.Windows.Forms.RibbonPanel();
+            this.rbBtnSizeCategoryManage = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel1 = new System.Windows.Forms.RibbonPanel();
+            this.rbBtnMenuCategoryManage = new System.Windows.Forms.RibbonButton();
             this.rbnTabSettings = new System.Windows.Forms.RibbonTab();
             this.rbnPanDatabaseConnection = new System.Windows.Forms.RibbonPanel();
+            this.rbBtnDatabaseManage = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel3 = new System.Windows.Forms.RibbonPanel();
+            this.rbBtnShopInformation = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel4 = new System.Windows.Forms.RibbonPanel();
+            this.rbBtnGeneralSetting = new System.Windows.Forms.RibbonButton();
             this.ribbonTab1 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel5 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonButton1 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton9 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton2 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton3 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton4 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton5 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton7 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton6 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton8 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton10 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton11 = new System.Windows.Forms.RibbonButton();
+            this.rbBtnAbout = new System.Windows.Forms.RibbonButton();
             this.SuspendLayout();
             // 
             // rbnMain
@@ -99,9 +99,19 @@
             // rbnPanSale
             // 
             this.rbnPanSale.ButtonMoreVisible = false;
-            this.rbnPanSale.Items.Add(this.ribbonButton1);
+            this.rbnPanSale.Items.Add(this.rbBtnSales);
             this.rbnPanSale.Name = "rbnPanSale";
             this.rbnPanSale.Text = "Sales";
+            // 
+            // rbBtnSales
+            // 
+            this.rbBtnSales.Image = ((System.Drawing.Image)(resources.GetObject("rbBtnSales.Image")));
+            this.rbBtnSales.LargeImage = ((System.Drawing.Image)(resources.GetObject("rbBtnSales.LargeImage")));
+            this.rbBtnSales.MinimumSize = new System.Drawing.Size(120, 70);
+            this.rbBtnSales.Name = "rbBtnSales";
+            this.rbBtnSales.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbBtnSales.SmallImage")));
+            this.rbBtnSales.Text = "";
+            this.rbBtnSales.Click += new System.EventHandler(this.rbBtnSales_Click);
             // 
             // rbnTabReports
             // 
@@ -112,9 +122,19 @@
             // ribbonPanel2
             // 
             this.ribbonPanel2.ButtonMoreVisible = false;
-            this.ribbonPanel2.Items.Add(this.ribbonButton9);
+            this.ribbonPanel2.Items.Add(this.rbBtnSearchInvoice);
             this.ribbonPanel2.Name = "ribbonPanel2";
             this.ribbonPanel2.Text = "Search invoice";
+            // 
+            // rbBtnSearchInvoice
+            // 
+            this.rbBtnSearchInvoice.Image = global::CafeManager.Properties.Resources.search_70px;
+            this.rbBtnSearchInvoice.LargeImage = global::CafeManager.Properties.Resources.search_70px;
+            this.rbBtnSearchInvoice.MinimumSize = new System.Drawing.Size(120, 70);
+            this.rbBtnSearchInvoice.Name = "rbBtnSearchInvoice";
+            this.rbBtnSearchInvoice.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbBtnSearchInvoice.SmallImage")));
+            this.rbBtnSearchInvoice.Text = "";
+            this.rbBtnSearchInvoice.Click += new System.EventHandler(this.rbBtnSearchInvoice_Click);
             // 
             // rbnTabDefinition
             // 
@@ -129,36 +149,85 @@
             // rbnPanCustomer
             // 
             this.rbnPanCustomer.ButtonMoreVisible = false;
-            this.rbnPanCustomer.Items.Add(this.ribbonButton2);
+            this.rbnPanCustomer.Items.Add(this.rbBtnCustomerManage);
             this.rbnPanCustomer.Name = "rbnPanCustomer";
             this.rbnPanCustomer.Text = "Customer";
+            // 
+            // rbBtnCustomerManage
+            // 
+            this.rbBtnCustomerManage.Image = ((System.Drawing.Image)(resources.GetObject("rbBtnCustomerManage.Image")));
+            this.rbBtnCustomerManage.LargeImage = ((System.Drawing.Image)(resources.GetObject("rbBtnCustomerManage.LargeImage")));
+            this.rbBtnCustomerManage.MinimumSize = new System.Drawing.Size(120, 70);
+            this.rbBtnCustomerManage.Name = "rbBtnCustomerManage";
+            this.rbBtnCustomerManage.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbBtnCustomerManage.SmallImage")));
+            this.rbBtnCustomerManage.Text = "";
+            this.rbBtnCustomerManage.Click += new System.EventHandler(this.rbBtnCustomerManage_Click);
             // 
             // rbnPanMenuItem
             // 
             this.rbnPanMenuItem.ButtonMoreVisible = false;
-            this.rbnPanMenuItem.Items.Add(this.ribbonButton3);
+            this.rbnPanMenuItem.Items.Add(this.rbBtnMenuItemManage);
             this.rbnPanMenuItem.Name = "rbnPanMenuItem";
             this.rbnPanMenuItem.Text = "Menu Items";
+            // 
+            // rbBtnMenuItemManage
+            // 
+            this.rbBtnMenuItemManage.Image = global::CafeManager.Properties.Resources.menu;
+            this.rbBtnMenuItemManage.LargeImage = global::CafeManager.Properties.Resources.menu;
+            this.rbBtnMenuItemManage.MinimumSize = new System.Drawing.Size(120, 70);
+            this.rbBtnMenuItemManage.Name = "rbBtnMenuItemManage";
+            this.rbBtnMenuItemManage.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbBtnMenuItemManage.SmallImage")));
+            this.rbBtnMenuItemManage.Text = "";
+            this.rbBtnMenuItemManage.Click += new System.EventHandler(this.rbBtnMenuItemManage_Click);
             // 
             // rbnPanItemSize
             // 
             this.rbnPanItemSize.ButtonMoreVisible = false;
-            this.rbnPanItemSize.Items.Add(this.ribbonButton4);
+            this.rbnPanItemSize.Items.Add(this.rbBtnItemSizeManage);
             this.rbnPanItemSize.Name = "rbnPanItemSize";
             this.rbnPanItemSize.Text = "Items Size";
+            // 
+            // rbBtnItemSizeManage
+            // 
+            this.rbBtnItemSizeManage.Image = ((System.Drawing.Image)(resources.GetObject("rbBtnItemSizeManage.Image")));
+            this.rbBtnItemSizeManage.LargeImage = ((System.Drawing.Image)(resources.GetObject("rbBtnItemSizeManage.LargeImage")));
+            this.rbBtnItemSizeManage.MinimumSize = new System.Drawing.Size(120, 70);
+            this.rbBtnItemSizeManage.Name = "rbBtnItemSizeManage";
+            this.rbBtnItemSizeManage.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbBtnItemSizeManage.SmallImage")));
+            this.rbBtnItemSizeManage.Text = "";
+            this.rbBtnItemSizeManage.Click += new System.EventHandler(this.rbBtnItemSizeManage_Click);
             // 
             // rbnPanSizeCategory
             // 
             this.rbnPanSizeCategory.ButtonMoreVisible = false;
-            this.rbnPanSizeCategory.Items.Add(this.ribbonButton5);
+            this.rbnPanSizeCategory.Items.Add(this.rbBtnSizeCategoryManage);
             this.rbnPanSizeCategory.Name = "rbnPanSizeCategory";
             this.rbnPanSizeCategory.Text = "Size Category";
             // 
+            // rbBtnSizeCategoryManage
+            // 
+            this.rbBtnSizeCategoryManage.Image = global::CafeManager.Properties.Resources.sizecategory;
+            this.rbBtnSizeCategoryManage.LargeImage = global::CafeManager.Properties.Resources.sizecategory;
+            this.rbBtnSizeCategoryManage.MinimumSize = new System.Drawing.Size(120, 70);
+            this.rbBtnSizeCategoryManage.Name = "rbBtnSizeCategoryManage";
+            this.rbBtnSizeCategoryManage.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbBtnSizeCategoryManage.SmallImage")));
+            this.rbBtnSizeCategoryManage.Text = "";
+            this.rbBtnSizeCategoryManage.Click += new System.EventHandler(this.rbBtnSizeCategoryManage_Click);
+            // 
             // ribbonPanel1
             // 
-            this.ribbonPanel1.Items.Add(this.ribbonButton7);
+            this.ribbonPanel1.Items.Add(this.rbBtnMenuCategoryManage);
             this.ribbonPanel1.Name = "ribbonPanel1";
             this.ribbonPanel1.Text = "Menu Category";
+            // 
+            // rbBtnMenuCategoryManage
+            // 
+            this.rbBtnMenuCategoryManage.Image = global::CafeManager.Properties.Resources.menuItemCategory_70px;
+            this.rbBtnMenuCategoryManage.LargeImage = global::CafeManager.Properties.Resources.menuItemCategory_70px;
+            this.rbBtnMenuCategoryManage.Name = "rbBtnMenuCategoryManage";
+            this.rbBtnMenuCategoryManage.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbBtnMenuCategoryManage.SmallImage")));
+            this.rbBtnMenuCategoryManage.Text = "";
+            this.rbBtnMenuCategoryManage.Click += new System.EventHandler(this.rbBtnMenuCategoryManage_Click);
             // 
             // rbnTabSettings
             // 
@@ -171,23 +240,53 @@
             // rbnPanDatabaseConnection
             // 
             this.rbnPanDatabaseConnection.ButtonMoreVisible = false;
-            this.rbnPanDatabaseConnection.Items.Add(this.ribbonButton6);
+            this.rbnPanDatabaseConnection.Items.Add(this.rbBtnDatabaseManage);
             this.rbnPanDatabaseConnection.Name = "rbnPanDatabaseConnection";
             this.rbnPanDatabaseConnection.Text = "Database Connection";
+            // 
+            // rbBtnDatabaseManage
+            // 
+            this.rbBtnDatabaseManage.Image = global::CafeManager.Properties.Resources.ManageDB_70px;
+            this.rbBtnDatabaseManage.LargeImage = global::CafeManager.Properties.Resources.ManageDB_70px;
+            this.rbBtnDatabaseManage.MinimumSize = new System.Drawing.Size(120, 70);
+            this.rbBtnDatabaseManage.Name = "rbBtnDatabaseManage";
+            this.rbBtnDatabaseManage.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbBtnDatabaseManage.SmallImage")));
+            this.rbBtnDatabaseManage.Text = "";
+            this.rbBtnDatabaseManage.Click += new System.EventHandler(this.rbBtnDatabaseManage_Click);
             // 
             // ribbonPanel3
             // 
             this.ribbonPanel3.ButtonMoreVisible = false;
-            this.ribbonPanel3.Items.Add(this.ribbonButton8);
+            this.ribbonPanel3.Items.Add(this.rbBtnShopInformation);
             this.ribbonPanel3.Name = "ribbonPanel3";
             this.ribbonPanel3.Text = "Shop Information";
+            // 
+            // rbBtnShopInformation
+            // 
+            this.rbBtnShopInformation.Image = global::CafeManager.Properties.Resources.shop_70px;
+            this.rbBtnShopInformation.LargeImage = global::CafeManager.Properties.Resources.shop_70px;
+            this.rbBtnShopInformation.MinimumSize = new System.Drawing.Size(120, 70);
+            this.rbBtnShopInformation.Name = "rbBtnShopInformation";
+            this.rbBtnShopInformation.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbBtnShopInformation.SmallImage")));
+            this.rbBtnShopInformation.Text = "sdfjnsnjdf";
+            this.rbBtnShopInformation.Click += new System.EventHandler(this.rbBtnShopInformation_Click);
             // 
             // ribbonPanel4
             // 
             this.ribbonPanel4.ButtonMoreVisible = false;
-            this.ribbonPanel4.Items.Add(this.ribbonButton10);
+            this.ribbonPanel4.Items.Add(this.rbBtnGeneralSetting);
             this.ribbonPanel4.Name = "ribbonPanel4";
             this.ribbonPanel4.Text = "General";
+            // 
+            // rbBtnGeneralSetting
+            // 
+            this.rbBtnGeneralSetting.Image = global::CafeManager.Properties.Resources.setting_70px;
+            this.rbBtnGeneralSetting.LargeImage = global::CafeManager.Properties.Resources.setting_70px;
+            this.rbBtnGeneralSetting.MinimumSize = new System.Drawing.Size(120, 70);
+            this.rbBtnGeneralSetting.Name = "rbBtnGeneralSetting";
+            this.rbBtnGeneralSetting.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbBtnGeneralSetting.SmallImage")));
+            this.rbBtnGeneralSetting.Text = "";
+            this.rbBtnGeneralSetting.Click += new System.EventHandler(this.rbBtnGeneralSetting_Click);
             // 
             // ribbonTab1
             // 
@@ -198,118 +297,19 @@
             // ribbonPanel5
             // 
             this.ribbonPanel5.ButtonMoreVisible = false;
-            this.ribbonPanel5.Items.Add(this.ribbonButton11);
+            this.ribbonPanel5.Items.Add(this.rbBtnAbout);
             this.ribbonPanel5.Name = "ribbonPanel5";
             this.ribbonPanel5.Text = "About";
             // 
-            // ribbonButton1
+            // rbBtnAbout
             // 
-            this.ribbonButton1.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.Image")));
-            this.ribbonButton1.LargeImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.LargeImage")));
-            this.ribbonButton1.MinimumSize = new System.Drawing.Size(120, 70);
-            this.ribbonButton1.Name = "ribbonButton1";
-            this.ribbonButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.SmallImage")));
-            this.ribbonButton1.Text = "";
-            this.ribbonButton1.Click += new System.EventHandler(this.ribbonButton1_Click);
-            // 
-            // ribbonButton9
-            // 
-            this.ribbonButton9.Image = global::CafeManager.Properties.Resources.search_70px;
-            this.ribbonButton9.LargeImage = global::CafeManager.Properties.Resources.search_70px;
-            this.ribbonButton9.MinimumSize = new System.Drawing.Size(120, 70);
-            this.ribbonButton9.Name = "ribbonButton9";
-            this.ribbonButton9.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton9.SmallImage")));
-            this.ribbonButton9.Text = "";
-            this.ribbonButton9.Click += new System.EventHandler(this.ribbonButton9_Click);
-            // 
-            // ribbonButton2
-            // 
-            this.ribbonButton2.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton2.Image")));
-            this.ribbonButton2.LargeImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton2.LargeImage")));
-            this.ribbonButton2.MinimumSize = new System.Drawing.Size(120, 70);
-            this.ribbonButton2.Name = "ribbonButton2";
-            this.ribbonButton2.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton2.SmallImage")));
-            this.ribbonButton2.Text = "";
-            this.ribbonButton2.Click += new System.EventHandler(this.ribbonButton2_Click);
-            // 
-            // ribbonButton3
-            // 
-            this.ribbonButton3.Image = global::CafeManager.Properties.Resources.menu;
-            this.ribbonButton3.LargeImage = global::CafeManager.Properties.Resources.menu;
-            this.ribbonButton3.MinimumSize = new System.Drawing.Size(120, 70);
-            this.ribbonButton3.Name = "ribbonButton3";
-            this.ribbonButton3.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton3.SmallImage")));
-            this.ribbonButton3.Text = "";
-            this.ribbonButton3.Click += new System.EventHandler(this.ribbonButton3_Click);
-            // 
-            // ribbonButton4
-            // 
-            this.ribbonButton4.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton4.Image")));
-            this.ribbonButton4.LargeImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton4.LargeImage")));
-            this.ribbonButton4.MinimumSize = new System.Drawing.Size(120, 70);
-            this.ribbonButton4.Name = "ribbonButton4";
-            this.ribbonButton4.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton4.SmallImage")));
-            this.ribbonButton4.Text = "";
-            this.ribbonButton4.Click += new System.EventHandler(this.ribbonButton4_Click);
-            // 
-            // ribbonButton5
-            // 
-            this.ribbonButton5.Image = global::CafeManager.Properties.Resources.sizecategory;
-            this.ribbonButton5.LargeImage = global::CafeManager.Properties.Resources.sizecategory;
-            this.ribbonButton5.MinimumSize = new System.Drawing.Size(120, 70);
-            this.ribbonButton5.Name = "ribbonButton5";
-            this.ribbonButton5.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton5.SmallImage")));
-            this.ribbonButton5.Text = "";
-            this.ribbonButton5.Click += new System.EventHandler(this.ribbonButton5_Click);
-            // 
-            // ribbonButton7
-            // 
-            this.ribbonButton7.Image = global::CafeManager.Properties.Resources.menuItemCategory_70px;
-            this.ribbonButton7.LargeImage = global::CafeManager.Properties.Resources.menuItemCategory_70px;
-            this.ribbonButton7.Name = "ribbonButton7";
-            this.ribbonButton7.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton7.SmallImage")));
-            this.ribbonButton7.Text = "";
-            this.ribbonButton7.Click += new System.EventHandler(this.ribbonButton7_Click);
-            // 
-            // ribbonButton6
-            // 
-            this.ribbonButton6.Image = global::CafeManager.Properties.Resources.ManageDB_70px;
-            this.ribbonButton6.LargeImage = global::CafeManager.Properties.Resources.ManageDB_70px;
-            this.ribbonButton6.MinimumSize = new System.Drawing.Size(120, 70);
-            this.ribbonButton6.Name = "ribbonButton6";
-            this.ribbonButton6.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton6.SmallImage")));
-            this.ribbonButton6.Text = "";
-            this.ribbonButton6.Click += new System.EventHandler(this.ribbonButton6_Click);
-            // 
-            // ribbonButton8
-            // 
-            this.ribbonButton8.Image = global::CafeManager.Properties.Resources.shop_70px;
-            this.ribbonButton8.LargeImage = global::CafeManager.Properties.Resources.shop_70px;
-            this.ribbonButton8.MinimumSize = new System.Drawing.Size(120, 70);
-            this.ribbonButton8.Name = "ribbonButton8";
-            this.ribbonButton8.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton8.SmallImage")));
-            this.ribbonButton8.Text = "sdfjnsnjdf";
-            this.ribbonButton8.Click += new System.EventHandler(this.ribbonButton8_Click);
-            // 
-            // ribbonButton10
-            // 
-            this.ribbonButton10.Image = global::CafeManager.Properties.Resources.setting_70px;
-            this.ribbonButton10.LargeImage = global::CafeManager.Properties.Resources.setting_70px;
-            this.ribbonButton10.MinimumSize = new System.Drawing.Size(120, 70);
-            this.ribbonButton10.Name = "ribbonButton10";
-            this.ribbonButton10.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton10.SmallImage")));
-            this.ribbonButton10.Text = "";
-            this.ribbonButton10.Click += new System.EventHandler(this.ribbonButton10_Click);
-            // 
-            // ribbonButton11
-            // 
-            this.ribbonButton11.Image = global::CafeManager.Properties.Resources.about_70px;
-            this.ribbonButton11.LargeImage = global::CafeManager.Properties.Resources.about_70px;
-            this.ribbonButton11.MinimumSize = new System.Drawing.Size(120, 70);
-            this.ribbonButton11.Name = "ribbonButton11";
-            this.ribbonButton11.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton11.SmallImage")));
-            this.ribbonButton11.Text = "";
-            this.ribbonButton11.Click += new System.EventHandler(this.ribbonButton11_Click);
+            this.rbBtnAbout.Image = global::CafeManager.Properties.Resources.about_70px;
+            this.rbBtnAbout.LargeImage = global::CafeManager.Properties.Resources.about_70px;
+            this.rbBtnAbout.MinimumSize = new System.Drawing.Size(120, 70);
+            this.rbBtnAbout.Name = "rbBtnAbout";
+            this.rbBtnAbout.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbBtnAbout.SmallImage")));
+            this.rbBtnAbout.Text = "";
+            this.rbBtnAbout.Click += new System.EventHandler(this.rbBtnAbout_Click);
             // 
             // MainForm
             // 
@@ -339,26 +339,26 @@
         private System.Windows.Forms.RibbonPanel ribbonPanel2;
         private System.Windows.Forms.RibbonPanel rbnPanCustomer;
         private System.Windows.Forms.RibbonPanel rbnPanDatabaseConnection;
-        private System.Windows.Forms.RibbonButton ribbonButton1;
+        private System.Windows.Forms.RibbonButton rbBtnSales;
         private System.Windows.Forms.Ribbon rbnMain;
-        private System.Windows.Forms.RibbonButton ribbonButton2;
+        private System.Windows.Forms.RibbonButton rbBtnCustomerManage;
         private System.Windows.Forms.RibbonPanel rbnPanMenuItem;
-        private System.Windows.Forms.RibbonButton ribbonButton3;
+        private System.Windows.Forms.RibbonButton rbBtnMenuItemManage;
         private System.Windows.Forms.RibbonPanel rbnPanItemSize;
-        private System.Windows.Forms.RibbonButton ribbonButton4;
+        private System.Windows.Forms.RibbonButton rbBtnItemSizeManage;
         private System.Windows.Forms.RibbonPanel rbnPanSizeCategory;
-        private System.Windows.Forms.RibbonButton ribbonButton5;
-        private System.Windows.Forms.RibbonButton ribbonButton6;
+        private System.Windows.Forms.RibbonButton rbBtnSizeCategoryManage;
+        private System.Windows.Forms.RibbonButton rbBtnDatabaseManage;
         private System.Windows.Forms.RibbonPanel ribbonPanel1;
-        private System.Windows.Forms.RibbonButton ribbonButton7;
+        private System.Windows.Forms.RibbonButton rbBtnMenuCategoryManage;
         private System.Windows.Forms.RibbonPanel ribbonPanel3;
-        private System.Windows.Forms.RibbonButton ribbonButton8;
-        private System.Windows.Forms.RibbonButton ribbonButton9;
+        private System.Windows.Forms.RibbonButton rbBtnShopInformation;
+        private System.Windows.Forms.RibbonButton rbBtnSearchInvoice;
         private System.Windows.Forms.RibbonPanel ribbonPanel4;
-        private System.Windows.Forms.RibbonButton ribbonButton10;
+        private System.Windows.Forms.RibbonButton rbBtnGeneralSetting;
         private System.Windows.Forms.RibbonTab ribbonTab1;
         private System.Windows.Forms.RibbonPanel ribbonPanel5;
-        private System.Windows.Forms.RibbonButton ribbonButton11;
+        private System.Windows.Forms.RibbonButton rbBtnAbout;
     }
 }
 

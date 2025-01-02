@@ -50,7 +50,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(986, 119);
+            this.groupBox1.Size = new System.Drawing.Size(959, 119);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -58,7 +58,7 @@
             // 
             this.btnInvoceSearch.BackgroundImage = global::CafeManager.Properties.Resources.search_70px;
             this.btnInvoceSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnInvoceSearch.Location = new System.Drawing.Point(884, 16);
+            this.btnInvoceSearch.Location = new System.Drawing.Point(851, 16);
             this.btnInvoceSearch.Name = "btnInvoceSearch";
             this.btnInvoceSearch.Size = new System.Drawing.Size(90, 90);
             this.btnInvoceSearch.TabIndex = 2;
@@ -102,7 +102,7 @@
             this.groupBox2.Controls.Add(this.dgvInvoicesList);
             this.groupBox2.Location = new System.Drawing.Point(12, 137);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(986, 370);
+            this.groupBox2.Size = new System.Drawing.Size(959, 370);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
@@ -112,7 +112,7 @@
             this.dgvInvoicesList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvInvoicesList.Location = new System.Drawing.Point(3, 16);
             this.dgvInvoicesList.Name = "dgvInvoicesList";
-            this.dgvInvoicesList.Size = new System.Drawing.Size(980, 351);
+            this.dgvInvoicesList.Size = new System.Drawing.Size(953, 351);
             this.dgvInvoicesList.TabIndex = 0;
             this.dgvInvoicesList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInvoicesList_CellDoubleClick);
             // 

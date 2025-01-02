@@ -40,9 +40,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.chkAutoBackup = new System.Windows.Forms.CheckBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblSqlInfo = new System.Windows.Forms.Label();
+            this.lblDatabaseInfo = new System.Windows.Forms.Label();
+            this.lblTablesInfo = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -178,52 +178,53 @@
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.label7);
-            this.groupBox8.Controls.Add(this.label4);
-            this.groupBox8.Controls.Add(this.label8);
+            this.groupBox8.Controls.Add(this.lblSqlInfo);
+            this.groupBox8.Controls.Add(this.lblDatabaseInfo);
+            this.groupBox8.Controls.Add(this.lblTablesInfo);
             this.groupBox8.Location = new System.Drawing.Point(16, 19);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(870, 100);
             this.groupBox8.TabIndex = 9;
             this.groupBox8.TabStop = false;
             // 
-            // label7
+            // lblSqlInfo
             // 
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(12, 39);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(270, 24);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "SQLServer is not installed or Available";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblSqlInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSqlInfo.ForeColor = System.Drawing.Color.Red;
+            this.lblSqlInfo.Location = new System.Drawing.Point(12, 39);
+            this.lblSqlInfo.Name = "lblSqlInfo";
+            this.lblSqlInfo.Size = new System.Drawing.Size(270, 24);
+            this.lblSqlInfo.TabIndex = 3;
+            this.lblSqlInfo.Text = "SQLServer is not installed or Available";
+            this.lblSqlInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label4
+            // lblDatabaseInfo
             // 
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(303, 39);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(270, 24);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Database is not exist";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblDatabaseInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDatabaseInfo.ForeColor = System.Drawing.Color.Red;
+            this.lblDatabaseInfo.Location = new System.Drawing.Point(303, 39);
+            this.lblDatabaseInfo.Name = "lblDatabaseInfo";
+            this.lblDatabaseInfo.Size = new System.Drawing.Size(270, 24);
+            this.lblDatabaseInfo.TabIndex = 7;
+            this.lblDatabaseInfo.Text = "Database is not exist";
+            this.lblDatabaseInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label8
+            // lblTablesInfo
             // 
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(586, 39);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(270, 24);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "Tables are not exist";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTablesInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTablesInfo.ForeColor = System.Drawing.Color.Red;
+            this.lblTablesInfo.Location = new System.Drawing.Point(586, 39);
+            this.lblTablesInfo.Name = "lblTablesInfo";
+            this.lblTablesInfo.Size = new System.Drawing.Size(270, 24);
+            this.lblTablesInfo.TabIndex = 8;
+            this.lblTablesInfo.Text = "Tables are not exist";
+            this.lblTablesInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.groupBox2);
             this.groupBox7.Controls.Add(this.groupBox1);
+            this.groupBox7.Enabled = false;
             this.groupBox7.Location = new System.Drawing.Point(16, 125);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(870, 149);
@@ -347,12 +348,12 @@
         private System.Windows.Forms.CheckBox chkAutoBackup;
         private System.Windows.Forms.Button btnSelectDefaultDbPath;
         private System.Windows.Forms.Label lblBackupPath;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblSqlInfo;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnRetoreDatabase;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblDatabaseInfo;
+        private System.Windows.Forms.Label lblTablesInfo;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.GroupBox groupBox7;
