@@ -245,6 +245,11 @@ namespace CafeManager
                 
         }
 
-        
+        private void ribbonButton11_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm(_settingsService);
+            aboutForm.MdiParent = this;
+            aboutForm.Show();
+        }
     }
 }

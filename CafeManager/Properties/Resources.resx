@@ -121,9 +121,6 @@
   <data name="cat_GoOncup4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cat_GoOncup4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BackupDB_70px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BackupDB_70px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="db_70px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\db_70px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -136,8 +133,14 @@
   <data name="menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="search_70px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\search_70px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="AddTable_70px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AddTable_70px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cat_GoOncup1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cat_GoOncup1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cat_smoothi1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cat_smoothi1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,14 +166,17 @@
   <data name="cat_shot2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cat_shot2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cat_frapmed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cat_frapmed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="del" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\del.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cat_food" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cat_food.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="add_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\add_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="login" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\login.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,17 +187,11 @@
   <data name="images (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images (1).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="login" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\login.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cat_hotchok2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cat_hotchok2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cat_koktail" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cat_koktail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cat_late2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cat_late2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cat_GoOncup2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cat_GoOncup2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="add" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -220,8 +220,8 @@
   <data name="cat_smoothi4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cat_smoothi4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="search_70px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\search_70px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cat_late2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cat_late2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cat_milkshake" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cat_milkshake.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -229,8 +229,8 @@
   <data name="cat_cupS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cat_cupS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cat_hotchok2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cat_hotchok2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cat_GoOncup2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cat_GoOncup2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="add_lit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\add_lit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -241,8 +241,11 @@
   <data name="menuItemCategory_70px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\menuItemCategory_70px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="menu1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="setting_70px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\setting_70px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cat_cupXL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cat_cupXL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ImportDB_70" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ImportDB_70.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -253,8 +256,11 @@
   <data name="cat_Shot1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cat_Shot1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="setting_70px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\setting_70px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="close_21px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\close_21px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cat_frapmed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cat_frapmed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ImportDB_70px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ImportDB_70px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -262,17 +268,14 @@
   <data name="cat_latte1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cat_latte1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cat_ice1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cat_ice1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="CheckDB_70px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CheckDB_70px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cat_GoOncup1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cat_GoOncup1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="BackupDB_70px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BackupDB_70px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AddDB_70px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AddDB_70px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cat_ice1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cat_ice1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cat_hotchok1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cat_hotchok1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -280,11 +283,11 @@
   <data name="cat_GoOncup3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cat_GoOncup3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cat_cupXL" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cat_cupXL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AddDB_70px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AddDB_70px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cat_food" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cat_food.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="menu1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cat_cake" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cat_cake.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -292,7 +295,7 @@
   <data name="cat_shot4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cat_shot4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="close_21px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\close_21px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="about_70px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\about_70px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

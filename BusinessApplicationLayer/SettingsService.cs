@@ -61,6 +61,7 @@ namespace BusinessApplicationLayer
                             new Settings { SettingsKey = "PhoneNumber", SettingsValue = "+491223432132" },
                             new Settings { SettingsKey = "InvoiceDescription", SettingsValue = "All price include applicable taxses.\nThank you for your purchase!" },
                             new Settings { SettingsKey = "ImageMode", SettingsValue = "Normal" },
+                            new Settings { SettingsKey = "Version", SettingsValue = "1.0.0" }
 
                         };
 

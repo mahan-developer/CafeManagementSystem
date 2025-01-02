@@ -32,6 +32,7 @@ namespace CafeManager
         private async void LoginForm_Load(object sender, EventArgs e)
         {
             _pass= await GetSettingValueAsync(1);
+            lblInfo.Text = "CAFE MANAGER V" + await GetSettingValueAsync(11);
         }
 
         private void txtLogin_KeyPress(object sender, KeyPressEventArgs e)

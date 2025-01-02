@@ -77,13 +77,13 @@ namespace CafeManager
             // 
             this.lblInfo.AutoSize = true;
             this.lblInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(75)))), ((int)(((byte)(112)))));
-            this.lblInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(238)))), ((int)(((byte)(241)))));
             this.lblInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(238)))), ((int)(((byte)(241)))));
             this.lblInfo.Location = new System.Drawing.Point(33, 36);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(126, 13);
+            this.lblInfo.Size = new System.Drawing.Size(144, 13);
             this.lblInfo.TabIndex = 3;
-            this.lblInfo.Text = "Cafe manager V1.0.0";
+            this.lblInfo.Text = "CAFE MANAGER V1.0.0";
             // 
             // LoginForm
             // 
