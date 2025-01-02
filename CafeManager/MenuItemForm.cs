@@ -32,18 +32,17 @@ namespace CafeManager
 
         private void LoadImagesToListView(string categoryPrefix)
         {
-            // پاک کردن موارد قبلی
+
             listViewImages.Clear();
 
-            // تعریف ImageList برای ListView
             ImageList imageList = new ImageList
             {
-                ImageSize = new Size(44, 52) // اندازه تصاویر
+                ImageSize = new Size(44, 52)
             };
 
             listViewImages.LargeImageList = imageList;
 
-            // دریافت منابع
+
             var resourceManager = Properties.Resources.ResourceManager;
             var resourceSet = resourceManager.GetResourceSet(System.Globalization.CultureInfo.CurrentCulture, true, true);
 
@@ -51,7 +50,7 @@ namespace CafeManager
             foreach (DictionaryEntry entry in resourceSet)
             {
                 string resourceName = entry.Key.ToString();
-                if (resourceName.StartsWith(categoryPrefix)) // فیلتر براساس پیشوند
+                if (resourceName.StartsWith(categoryPrefix)) 
                 {
                     Image resourceImage = entry.Value as Image;
                     if (resourceImage != null)
@@ -120,7 +119,6 @@ namespace CafeManager
 
         private void InitializeDataGridView()
         {
-            //dgvCafeMenuItemList.CellFormatting += DgvCafeMenuItemList_CellFormatting;
 
             if (dgvCafeMenuItemList.Rows.Count != 0)
             {
@@ -169,20 +167,17 @@ namespace CafeManager
         {
             try
             {
-
-                // Fetch data from the service
                 var searchParameters = new Dictionary<string, object>();
                 List<CafeMenuItem> cafeMenuItem = await Task.Run(() => _cafeMenuItemService.GetCafeMenuItem(searchParameters));
 
                 if (cafeMenuItem != null && cafeMenuItem.Any())
                 {
-                    dgvCafeMenuItemList.DataSource = null; // پاک کردن منبع داده
-                    dgvCafeMenuItemList.Rows.Clear(); // پاک کردن ردیف‌ها
-                    dgvCafeMenuItemList.Columns.Clear(); // پاک کردن ستون‌ها
-                    // Bind data to the DataGridView
+                    dgvCafeMenuItemList.DataSource = null; 
+                    dgvCafeMenuItemList.Rows.Clear();
+                    dgvCafeMenuItemList.Columns.Clear();
+
                     dgvCafeMenuItemList.DataSource = cafeMenuItem;
 
-                    // Adjust column widths (modify based on actual fields in MenuItemSizeCategory)
                     dgvCafeMenuItemList.Columns["CafeMenuItemID"].Width = 50;
                     dgvCafeMenuItemList.Columns["CafeMenuItemID"].HeaderText = "ID";
 
@@ -219,12 +214,6 @@ namespace CafeManager
                     dgvCafeMenuItemList.Columns["CafeMenuItemImage"].Visible = false;
 
 
-                    //if (dgvCafeMenuItemList.Columns.Contains("CafeMenuItemImage"))
-                    //{
-                    //    dgvCafeMenuItemList.Columns.Remove("CafeMenuItemImage");
-                    //}
-
-                    // اضافه کردن ستون تصویر
                     DataGridViewImageColumn imageColumn = new DataGridViewImageColumn
                     {
                         Name = "CafeMenuItemImage2",
@@ -234,7 +223,7 @@ namespace CafeManager
                     };
                     dgvCafeMenuItemList.Columns.Add(imageColumn);
 
-                    // تبدیل نام تصویر به خود تصویر
+
                     foreach (DataGridViewRow row in dgvCafeMenuItemList.Rows)
                     {
                         var menuItem = row.DataBoundItem as CafeMenuItem;
@@ -275,6 +264,15 @@ namespace CafeManager
                 var cafeMenuItemList = await Task.Run(() => _cafeMenuItemService.GetCafeMenuItem(searchParameters));
 
                 dgvCafeMenuItemList.DataSource = cafeMenuItemList;
+                foreach (DataGridViewRow row in dgvCafeMenuItemList.Rows)
+                {
+                    var menuItem = row.DataBoundItem as CafeMenuItem;
+                    if (menuItem != null)
+                    {
+                        var image = Properties.Resources.ResourceManager.GetObject(menuItem.CafeMenuItemImage) as Image;
+                        row.Cells["CafeMenuItemImage2"].Value = image;
+                    }
+                }
 
             }
             catch (Exception ex)
@@ -285,63 +283,6 @@ namespace CafeManager
 
 
 
-
-
-        //private string ShowImageSelectionDialog(string currentImage)
-        //{
-        //    using (Form imageDialog = new Form())
-        //    {
-        //        imageDialog.Text = "Select Image";
-        //        imageDialog.Size = new Size(400, 300);
-
-        //        // ListBox برای نمایش تصاویر
-        //        ListBox imageListBox = new ListBox
-        //        {
-        //            Dock = DockStyle.Fill
-        //        };
-
-        //        // گرفتن لیست تصاویر از منابع
-        //        var resourceManager = Properties.Resources.ResourceManager;
-        //        var resourceSet = resourceManager.GetResourceSet(System.Globalization.CultureInfo.CurrentCulture, true, true);
-
-        //        foreach (DictionaryEntry entry in resourceSet)
-        //        {
-        //            string resourceName = entry.Key.ToString();
-        //            if (!string.IsNullOrEmpty(resourceName) && resourceName.StartsWith("cat_"))
-        //            {
-        //                imageListBox.Items.Add(resourceName);
-        //            }
-        //        }
-
-        //        // انتخاب پیش‌فرض
-        //        if (!string.IsNullOrEmpty(currentImage))
-        //        {
-        //            imageListBox.SelectedItem = currentImage;
-        //        }
-
-        //        // دکمه OK
-        //        Button btnOk = new Button
-        //        {
-        //            Text = "OK",
-        //            Dock = DockStyle.Bottom
-        //        };
-        //        btnOk.Click += (s, e) => { imageDialog.DialogResult = DialogResult.OK; imageDialog.Close(); };
-
-        //        // اضافه کردن کنترل‌ها به دیالوگ
-        //        imageDialog.Controls.Add(imageListBox);
-        //        imageDialog.Controls.Add(btnOk);
-
-        //        // نمایش دیالوگ
-        //        if (imageDialog.ShowDialog() == DialogResult.OK && imageListBox.SelectedItem != null)
-        //        {
-        //            return imageListBox.SelectedItem.ToString();
-        //        }
-        //    }
-
-        //    return currentImage; // اگر تغییری اعمال نشد، مقدار قبلی را برگردانید
-        //}
-
-
         private string ShowImageSelectionDialog(string currentImage)
         {
             using (Form imageDialog = new Form())
@@ -350,8 +291,6 @@ namespace CafeManager
                 imageDialog.Size = new Size(400, 300);
 
                 
-
-                // ListBox برای نمایش تصاویر
                 ListView imageListMain = new ListView
                 {
                     View = View.LargeIcon,
@@ -360,12 +299,12 @@ namespace CafeManager
 
                 ImageList imageList = new ImageList
                 {
-                    ImageSize = new Size(44, 52) // اندازه تصاویر
+                    ImageSize = new Size(44, 52) 
                 };
 
                 imageListMain.LargeImageList = imageList;
 
-                // گرفتن لیست تصاویر از منابع
+              
                 var resourceManager = Properties.Resources.ResourceManager;
                 var resourceSet = resourceManager.GetResourceSet(System.Globalization.CultureInfo.CurrentCulture, true, true);
 
@@ -374,7 +313,7 @@ namespace CafeManager
                 foreach (DictionaryEntry entry in resourceSet)
                 {
                     string resourceName = entry.Key.ToString();
-                    if (resourceName.StartsWith("cat_")) // فیلتر براساس پیشوند
+                    if (resourceName.StartsWith("cat_")) 
                     {
                         Image resourceImage = entry.Value as Image;
                         if (resourceImage != null)
@@ -385,7 +324,7 @@ namespace CafeManager
                     }
                 }
 
-                // تنظیم تصویر انتخاب‌شده فعلی
+         
                 if (!string.IsNullOrEmpty(currentImage))
                 {
                     foreach (ListViewItem item in imageListMain.Items)
@@ -402,7 +341,7 @@ namespace CafeManager
 
 
 
-                // دکمه OK
+             
                 Button btnOk = new Button
                 {
                     Text = "OK",
@@ -410,21 +349,18 @@ namespace CafeManager
                 };
                 btnOk.Click += (s, e) => { imageDialog.DialogResult = DialogResult.OK; imageDialog.Close(); };
 
-                // اضافه کردن کنترل‌ها به دیالوگ
+        
                 imageDialog.Controls.Add(imageListMain);
                 imageDialog.Controls.Add(btnOk);
 
                 if (imageDialog.ShowDialog() == DialogResult.OK && imageListMain.SelectedItems.Count > 0)
                 {
-                    return imageListMain.SelectedItems[0].Text; // نام تصویر انتخاب‌شده
+                    return imageListMain.SelectedItems[0].Text; 
                 }
             }
 
-            return currentImage; // اگر تغییری اعمال نشد، مقدار قبلی را برگردانید
+            return currentImage; 
         }
-
-
-
 
 
 
@@ -568,38 +504,28 @@ namespace CafeManager
                     MessageBox.Show("Menu item edit successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     await LoadCafeMenuItemDataAsync();
                     ControlHelper.ClearControlsInContainer(grpCafeMenuItemSearch);
-                }
-
-               
+                }               
             }
-
-
 
 
             if (e.RowIndex >= 0 && dgvCafeMenuItemList.Columns[e.ColumnIndex].Name == "CafeMenuItemImage2")
             {
-                // گرفتن نام تصویر فعلی
+        
                 string currentImage = dgvCafeMenuItemList.Rows[e.RowIndex].Cells["CafeMenuItemImage"].Value?.ToString();
 
-                // باز کردن دیالوگ انتخاب تصویر
+              
                 selectedImageName  = ShowImageSelectionDialog(currentImage);
 
                 if (!string.IsNullOrEmpty(selectedImageName))
                 {
-                    // به‌روزرسانی مقدار سلول
+               
                     dgvCafeMenuItemList.Rows[e.RowIndex].Cells["CafeMenuItemImage"].Value = selectedImageName;
                     var image = Properties.Resources.ResourceManager.GetObject(selectedImageName) as Image;
                     dgvCafeMenuItemList.Rows[e.RowIndex].Cells["CafeMenuItemImage2"].Value = image;
 
                 }
             }
-
-
-
-
         }
-
-
 
         
         private async void txtSearchCafeMenuItemName_KeyUp(object sender, KeyEventArgs e)

@@ -688,14 +688,14 @@ namespace CafeManager
             GroupBox groupBox4 = ControlLoader.CreateGroupBox("groupBox4", DockStyle.Fill);
             TableLayoutPanel innerTable4 = ControlLoader.CreateTableLayoutPanel(10, 1, DockStyle.Fill, 0);
             innerTable4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 60));
-            innerTable4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25));
+            innerTable4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20));
             innerTable4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 70));
             innerTable4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80));
             innerTable4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 62));
             innerTable4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 60));
-            innerTable4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 140));
-            innerTable4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 110));
             innerTable4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 70));
+            innerTable4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100));
+            innerTable4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90));
             innerTable4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80));
 
             lblDescription = ControlLoader.CreateLabel("Description", DockStyle.Fill, new Padding(0, 6, 0, 0), ContentAlignment.MiddleLeft, 10, FontStyle.Regular);
@@ -709,21 +709,23 @@ namespace CafeManager
             rdbCard = ControlLoader.CreateRadioButton("Card", "rdbCard", false);
 
             chkToGo = ControlLoader.CreateCheckBox("To-Go", "chkToGo", true, DockStyle.Fill);
-            chkPrintCustomer = ControlLoader.CreateCheckBox("Print customer invoice", "chkPrintCustomer", true, DockStyle.Fill);
-            chkPrintBar = ControlLoader.CreateCheckBox("Print bar invoice", "chkPrintBar", true, DockStyle.Fill);
+            chkPrintCustomer = ControlLoader.CreateCheckBox("Print customer", "chkPrintCustomer", true, DockStyle.Fill);
+            chkPrintBar = ControlLoader.CreateCheckBox("Print bar", "chkPrintBar", true, DockStyle.Fill);
 
             btnAdd = ControlLoader.CreateButton("btnAddInvoice", "", Properties.Resources.add_lit, new Size(75, 28), new Padding(0, 0, 5, 0));
 
             innerTable5 = ControlLoader.CreateTableLayoutPanel(2, 1, DockStyle.Fill, 0);
-            innerTable5.Width = 78;
+            innerTable5.Width = 80;
             innerTable5.Height = 20;
             innerTable5.Visible = false;
+            innerTable5.Margin = new Padding(0, 0, 6, 0);
 
             innerTable5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
             innerTable5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
 
-            btnEdit = ControlLoader.CreateButton("btnEditInvoice", "", Properties.Resources.edit_20px, new Size(35, 28), new Padding(0, 0, 5, 0));
-            btnNew = ControlLoader.CreateButton("btnNewInvoice", "", Properties.Resources.newForm_20px, new Size(35, 28), new Padding(0, 0, 5, 0));
+            btnEdit = ControlLoader.CreateButton("btnEditInvoice", "", Properties.Resources.edit_20px, new Size(35, 28), new Padding(0, 0, 0, 0));
+            btnNew = ControlLoader.CreateButton("btnNewInvoice", "", Properties.Resources.newForm_20px, new Size(35, 28), new Padding(0, 0, 0, 0));
+            
 
             innerTable5.Controls.Add(btnEdit, 0, 0);
             innerTable5.Controls.Add(btnNew, 1, 0);
