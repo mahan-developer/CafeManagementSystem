@@ -29,17 +29,36 @@ namespace DataAccessLayer
         // Method to check for the existence of sql
         public bool CheckSqlServerExists()
         {
-            string serviceName = "MSSQL$SQLEXPRESS";
+            const string serviceName = "MSSQL$SQLEXPRESS";
 
             try
             {
-                ServiceController service = new ServiceController(serviceName);
-                return service.Status == ServiceControllerStatus.Running || service.Status == ServiceControllerStatus.Stopped;
+                ServiceController[] services = ServiceController.GetServices();
+                var sqlService = services.FirstOrDefault(s => s.ServiceName.Equals(serviceName, StringComparison.OrdinalIgnoreCase));
+
+                if (sqlService == null || (sqlService.Status != ServiceControllerStatus.Running && sqlService.Status != ServiceControllerStatus.Stopped))
+                {
+                    return false;
+                }
+
+                try
+                {
+                    using (var connection = new SqlConnection(_connectionString))
+                    {
+                        connection.Open();
+                    }
+                }
+                catch
+                {
+                    return false;
+                }
+
+                return true;
             }
             catch (Exception ex)
             {
-                ErrorHandler.LogException(ex);
-                throw new Exception(ErrorHandler.GetFriendlyMessage(ex));
+                ErrorHandler.LogException(ex); 
+                return false;
             }
         }
 
@@ -254,112 +273,47 @@ namespace DataAccessLayer
             }));
 
             // تولید کوئری ایجاد Stored Procedures
-            procedures.Append($@"
-    IF NOT EXISTS (SELECT * FROM sys.objects WHERE name = 'spManage{tableName}' AND type = 'P')
-    BEGIN
-        EXEC('
-        CREATE PROCEDURE spManage{tableName}
-            @Operation NVARCHAR(10),
-            {updateDeleteParameters}
-        AS
-        BEGIN
-            IF @Operation = ''Insert''
+                    procedures.Append($@"
+            IF NOT EXISTS (SELECT * FROM sys.objects WHERE name = 'spManage{tableName}' AND type = 'P')
             BEGIN
-                INSERT INTO {tableName} ({columns})
-                VALUES ({values});
-            END
+                EXEC('
+                CREATE PROCEDURE spManage{tableName}
+                    @Operation NVARCHAR(10),
+                    {updateDeleteParameters}
+                AS
+                BEGIN
+                    IF @Operation = ''Insert''
+                    BEGIN
+                        INSERT INTO {tableName} ({columns})
+                        VALUES ({values});
+                    END
 
-            ELSE IF @Operation = ''Select''
-            BEGIN
-                SELECT * FROM {tableName} WHERE 1=1
-                {conditions};
-            END
+                    ELSE IF @Operation = ''Select''
+                    BEGIN
+                        SELECT * FROM {tableName} WHERE 1=1
+                        {conditions};
+                    END
 
-            ELSE IF @Operation = ''Update''
-            BEGIN
-                UPDATE {tableName}
-                SET {updateSets}
-                WHERE {primaryKey} = @{primaryKey};
-            END
+                    ELSE IF @Operation = ''Update''
+                    BEGIN
+                        UPDATE {tableName}
+                        SET {updateSets}
+                        WHERE {primaryKey} = @{primaryKey};
+                    END
 
-            ELSE IF @Operation = ''Delete''
-            BEGIN
-                DELETE FROM {tableName}
-                WHERE {primaryKey} = @{primaryKey};
-            END
-        END');
-    END;");
+                    ELSE IF @Operation = ''Delete''
+                    BEGIN
+                        DELETE FROM {tableName}
+                        WHERE {primaryKey} = @{primaryKey};
+                    END
+                END');
+            END;");
 
             return procedures.ToString();
         }
 
 
 
-
-        //private string GenerateCreateProcedureQueries(string tableName, Type entityType)
-        //{
-        //    var procedures = new StringBuilder();
-
-        //    // دریافت خصوصیات کلاس (Entity)
-        //    var properties = entityType.GetProperties();
-        //    var primaryKey = $"{tableName}ID";
-
-        //    // تعریف پارامترها برای عملیات CRUD
-        //    var insertParameters = string.Join(", ", properties.Select(p => $"@{p.Name} {GetSqlType(p.PropertyType)}"));
-        //    var updateDeleteParameters = string.Join(", ", properties.Select(p => $"@{p.Name} {GetSqlType(p.PropertyType)} = NULL"));
-
-        //    var columns = string.Join(", ", properties.Where(p => p.Name != primaryKey).Select(p => p.Name));
-        //    var values = string.Join(", ", properties.Where(p => p.Name != primaryKey).Select(p => $"@{p.Name}"));
-        //    var updateSets = string.Join(", ", properties.Where(p => p.Name != primaryKey).Select(p => $"{p.Name} = @{p.Name}"));
-
-        //    // ایجاد شرط‌ها برای Select (بر اساس نوع داده)
-        //    var conditions = string.Join(" ", properties.Select(p =>
-        //    {
-        //        if (p.PropertyType == typeof(bool) || p.PropertyType == typeof(int) || p.PropertyType == typeof(decimal))
-        //            return $"AND (@{p.Name} IS NULL OR {p.Name} = @{p.Name})"; // برای ستون‌های عددی و منطقی
-        //        else
-        //            return $"AND (@{p.Name} IS NULL OR {p.Name} LIKE ''%'' + @{p.Name} + ''%'')"; // برای رشته‌ها
-        //    }));
-
-        //    // تولید کوئری ایجاد Stored Procedures
-        //    procedures.Append($@"
-        //    IF NOT EXISTS (SELECT * FROM sys.objects WHERE name = 'spManage{tableName}' AND type = 'P')
-        //    BEGIN
-        //        EXEC('
-        //        CREATE PROCEDURE spManage{tableName}
-        //            @Operation NVARCHAR(10),
-        //            {updateDeleteParameters}
-        //        AS
-        //        BEGIN
-        //            IF @Operation = ''Insert''
-        //            BEGIN
-        //                INSERT INTO {tableName} ({columns})
-        //                VALUES ({values});
-        //            END
-
-        //            ELSE IF @Operation = ''Select''
-        //            BEGIN
-        //                SELECT * FROM {tableName} WHERE 1=1
-        //                {conditions};
-        //            END
-
-        //            ELSE IF @Operation = ''Update''
-        //            BEGIN
-        //                UPDATE {tableName}
-        //                SET {updateSets}
-        //                WHERE {primaryKey} = @{primaryKey};
-        //            END
-
-        //            ELSE IF @Operation = ''Delete''
-        //            BEGIN
-        //                DELETE FROM {tableName}
-        //                WHERE {primaryKey} = @{primaryKey};
-        //            END
-        //        END');
-        //    END;");
-
-        //    return procedures.ToString();
-        //}
 
 
 

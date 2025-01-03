@@ -21,6 +21,7 @@ C:\Users\majav\Desktop\CafeManager\CafeManager\bin\Debug\System.Runtime.Compiler
 C:\Users\majav\Desktop\CafeManager\CafeManager\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\majav\Desktop\CafeManager\CafeManager\bin\Debug\DataAccessLayer.pdb
 C:\Users\majav\Desktop\CafeManager\CafeManager\obj\Debug\CafeManager.csproj.AssemblyReference.cache
+C:\Users\majav\Desktop\CafeManager\CafeManager\obj\Debug\CafeManager.AboutForm.resources
 C:\Users\majav\Desktop\CafeManager\CafeManager\obj\Debug\CafeManager.CustomerForm.resources
 C:\Users\majav\Desktop\CafeManager\CafeManager\obj\Debug\CafeManager.DatabaseForm.resources
 C:\Users\majav\Desktop\CafeManager\CafeManager\obj\Debug\CafeManager.GeneralSettingsForm.resources
@@ -39,4 +40,3 @@ C:\Users\majav\Desktop\CafeManager\CafeManager\obj\Debug\CafeManager.csproj.Core
 C:\Users\majav\Desktop\CafeManager\CafeManager\obj\Debug\CafeMana.6A690E32.Up2Date
 C:\Users\majav\Desktop\CafeManager\CafeManager\obj\Debug\CafeManager.exe
 C:\Users\majav\Desktop\CafeManager\CafeManager\obj\Debug\CafeManager.pdb
-C:\Users\majav\Desktop\CafeManager\CafeManager\obj\Debug\CafeManager.AboutForm.resources
