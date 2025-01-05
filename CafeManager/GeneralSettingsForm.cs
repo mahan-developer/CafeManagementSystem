@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,13 +26,14 @@ namespace CafeManager
             _settingsService = settingsService;
         }
 
-        private string GetSettingValueAsync(int settingsId)
+        private List<Settings> GetSettingValueAsync()
         {
-            var searchParameters = new Dictionary<string, object> { { "SettingsID", settingsId } };
+            var searchParameters = new Dictionary<string, object>();
 
             var settings = _settingsService.GetSettingByField(searchParameters);
 
-            return settings.FirstOrDefault()?.SettingsValue;
+            return settings;
+
         }
 
         private async Task UpdateSettingsAsync(List<Settings> settingsList)
@@ -68,14 +71,24 @@ namespace CafeManager
                 picPreview.BackgroundImageLayout = ImageLayout.None;
         }
 
+        private void LoadPrinterName()
+        {
+            foreach (string printerName in PrinterSettings.InstalledPrinters)
+            {
+                cmbPrinterListForBar.Items.Add(printerName);
+                cmbPrinterListForCustomer.Items.Add(printerName);
+            }
+        }
+
 
 
         private void GeneralSettingsForm_Load(object sender, EventArgs e)
         {
-            oldPass= GetSettingValueAsync(1);
+            var settingAll = GetSettingValueAsync();
+            oldPass = settingAll[0].SettingsValue.ToString();
 
-            cmbPictureMode.Text = GetSettingValueAsync(10);
-            string backgroundImagePath = GetSettingValueAsync(4);
+            cmbPictureMode.Text = settingAll[9].SettingsValue.ToString();
+            string backgroundImagePath = settingAll[3].SettingsValue.ToString();
             filePath = backgroundImagePath;
             if (backgroundImagePath == "null")
             {
@@ -95,6 +108,26 @@ namespace CafeManager
                     picPreview.BackgroundImageLayout = ImageLayout.Center;
                 }
             }
+
+            cmbPrinterListForCustomer.Text = settingAll[11].SettingsValue.ToString();
+            cmbPrinterListForBar.Text = settingAll[12].SettingsValue.ToString();
+
+            if (settingAll[13].SettingsValue.ToString() == "true")
+                chkSetCustomerDefault.Checked = true;
+            else
+                chkSetCustomerDefault.Checked = false;
+
+            if (settingAll[14].SettingsValue.ToString() == "true")
+                chkSetBarDefault.Checked = true;
+            else
+                chkSetBarDefault.Checked = false;
+
+            if (settingAll[15].SettingsValue.ToString() == "true")
+                chkShowPrintPreview.Checked = true;
+            else
+                chkShowPrintPreview.Checked = false;
+
+            LoadPrinterName();
         }
 
 
@@ -145,8 +178,8 @@ namespace CafeManager
 
             await UpdateSettingsAsync(settingsList);
         }
-
-        private async void button1_Click(object sender, EventArgs e)
+        
+        private async void btnPasswordUpdate_Click(object sender, EventArgs e)
         {
             if (txtOldPassword.Text == oldPass)
             {
@@ -169,6 +202,56 @@ namespace CafeManager
             }
             else
                 MessageBox.Show("The old password is wrong", "Password update", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private async void btnPrinterUpdate_Click(object sender, EventArgs e)
+        {
+            string customerCheck = "false";
+            string barCheck = "false";
+            string previewCheck = "false";
+
+            if (chkSetCustomerDefault.Checked)
+                customerCheck = "true";
+            if (chkSetBarDefault.Checked)
+                barCheck = "true";
+            if (chkShowPrintPreview.Checked)
+                previewCheck = "true";
+
+            var settingsList = new List<Settings>
+            {
+                new Settings
+                {
+                    SettingsID = 12,
+                    SettingsKey = "PrinterCustomerName",
+                    SettingsValue = cmbPrinterListForCustomer.Text
+                },
+                new Settings
+                {
+                    SettingsID = 13,
+                    SettingsKey = "PrinterBarName",
+                    SettingsValue = cmbPrinterListForBar.Text
+                },
+                new Settings
+                {
+                    SettingsID = 14,
+                    SettingsKey = "PrinterCustomerChecked",
+                    SettingsValue = customerCheck
+                },
+                new Settings
+                {
+                    SettingsID = 15,
+                    SettingsKey = "PrinterBarChecked",
+                    SettingsValue = barCheck
+                },
+                 new Settings
+                {
+                    SettingsID = 16,
+                    SettingsKey = "PrintPreview",
+                    SettingsValue = previewCheck
+                }
+            };
+
+            await UpdateSettingsAsync(settingsList);
         }
     }
 }

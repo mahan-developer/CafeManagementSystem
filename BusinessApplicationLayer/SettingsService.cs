@@ -61,8 +61,12 @@ namespace BusinessApplicationLayer
                             new Settings { SettingsKey = "PhoneNumber", SettingsValue = "+491223432132" },
                             new Settings { SettingsKey = "InvoiceDescription", SettingsValue = "All price include applicable taxses.\r\nThank you for your purchase!" },
                             new Settings { SettingsKey = "ImageMode", SettingsValue = "Normal" },
-                            new Settings { SettingsKey = "Version", SettingsValue = "1.0.0" }
-
+                            new Settings { SettingsKey = "Version", SettingsValue = "1.0.0" },
+                            new Settings { SettingsKey = "PrinterCustomerName", SettingsValue = "" },
+                            new Settings { SettingsKey = "PrinterBarName", SettingsValue = "" },
+                            new Settings { SettingsKey = "PrinterCustomerChecked", SettingsValue = "true" },
+                            new Settings { SettingsKey = "PrinterBarChecked", SettingsValue = "true" },
+                            new Settings { SettingsKey = "PrintPreview", SettingsValue = "true" }
                         };
 
             foreach (var setting in initialSettings)

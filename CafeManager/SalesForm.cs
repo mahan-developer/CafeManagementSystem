@@ -177,6 +177,29 @@ namespace CafeManager
         }
 
 
+        private void SetFormNew()
+        {
+            var settingList = _dataLoader.LoadSettings();
+            bool printCustomer = false;
+            bool printBar = false;
+            if (settingList[13].SettingsValue.ToString() == "true")
+                printCustomer = true;
+            if (settingList[14].SettingsValue.ToString() == "true")
+                printBar = true;
+            CommonUtilities.ControlHelper.ClearControlsInContainer(groupBox3, groupBox4);
+            txtTodayInvoice.Text = "New";
+            textCustomer.Text = "Global";
+            customerID = 1;
+            rdbCasch.Checked = true;
+            chkToGo.Checked = true;
+            chkPrintCustomer.Checked = printCustomer;
+            chkPrintBar.Checked = printBar;
+            txtTotalPrice.Text = "0";
+            txtDescription.Text = string.Empty;
+            innerTable5.Visible = false;
+            btnAdd.Visible = true;
+        }
+
         private void SetSelectedInvoice(DataGridViewRow selectedRow)
         {
             invoiceDate = DateTime.Parse(selectedRow.Cells["InvoiceDate"].Value.ToString());
@@ -343,20 +366,13 @@ namespace CafeManager
 
         private void ConfigureGroup4Events()
         {
+           
+
+           
+
             btnNew.Click += (sender, e) =>
             {
-                CommonUtilities.ControlHelper.ClearControlsInContainer(groupBox3, groupBox4);
-                txtTodayInvoice.Text = "New";
-                textCustomer.Text = "Global";
-                customerID = 1;
-                rdbCasch.Checked = true;
-                chkToGo.Checked = true;
-                chkPrintCustomer.Checked = true;
-                chkPrintBar.Checked = true;
-                txtTotalPrice.Text = "0";
-                txtDescription.Text = string.Empty;
-                innerTable5.Visible = false;
-                btnAdd.Visible = true;
+                SetFormNew();
             };
 
             btnEdit.Click += async (sender, e) =>
@@ -783,9 +799,10 @@ namespace CafeManager
 
         private void SalesForm_Load(object sender, EventArgs e)
         {
-            customerID = 1;
+            customerID = 1;           
             CreateLayout();
-            EnableFormClickOnAllControls(this);           
+            EnableFormClickOnAllControls(this);
+            SetFormNew();
         }
 
         public void PrintCustomerInvoce()
@@ -805,6 +822,7 @@ namespace CafeManager
             string shopPhone = infoShop[7].SettingsValue;
             string shopDscription = infoShop[8].SettingsValue;
 
+            
 
             List<string[]> itemPrint = new List<string[]>();
 
@@ -826,19 +844,24 @@ namespace CafeManager
 
             PrintService printer = new PrintService(dpiX, dpiY);
             printer.SetInvoiceData(shopName, shopAddress, shopPhone, Properties.Resources.cat_hotchok2, itemPrint, txtTotalPrice.Text, shopDscription);
-
+            printer.GetPrintDocument().PrinterSettings.PrinterName = infoShop[11].SettingsValue.ToString();
 
             PrintPreviewDialog preview = new PrintPreviewDialog
             {
                 Document = printer.GetPrintDocument()
             };
 
-            preview.ShowDialog();
+            if(infoShop[15].SettingsValue.ToString() == "true")
+                preview.ShowDialog();
+            else
+                printer.GetPrintDocument().Print();
+
         }
 
         public void PrintBarInvoce()
         {
-          
+            var infoShop = _dataLoader.LoadSettings();
+
             float dpiX;
             float dpiY;
             using (Graphics g = this.CreateGraphics())
@@ -862,9 +885,6 @@ namespace CafeManager
                 barDscription = multiLineDescription.ToString();
             }
 
-            
-
-
             List<string[]> itemPrint = new List<string[]>();
 
             for (int i = 0; i < grid1.Rows.Count; i++)
@@ -882,18 +902,19 @@ namespace CafeManager
                 }
             }
 
-
-
             PrintService printer = new PrintService(dpiX, dpiY);
             printer.SetInvoiceData("", "", "", null, itemPrint, txtTotalPrice.Text, barDscription);
-
+            printer.GetPrintDocument().PrinterSettings.PrinterName = infoShop[12].SettingsValue.ToString();
 
             PrintPreviewDialog preview = new PrintPreviewDialog
             {
                 Document = printer.GetPrintDocumentBar()
             };
 
-            preview.ShowDialog();
+            if (infoShop[15].SettingsValue.ToString() == "true")
+                preview.ShowDialog();
+            else
+                printer.GetPrintDocument().Print();
         }
     }
 }

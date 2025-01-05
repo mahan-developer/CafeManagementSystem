@@ -45,6 +45,7 @@ namespace CafeManager
                 {
                     var mainForm = Application.OpenForms["MainForm"] as MainForm;
                     mainForm.Show();
+                    this.Close();
                 }
                 else
                 {
