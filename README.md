@@ -52,6 +52,11 @@ Manages **database operations (CRUD)** using ADO.NET and stored procedures. Exam
 4. Build and run the application.  
 
 ## Screenshots  
+ ![Sale](screenshots/sale.png)
+ ![EditSale](screenshots/SaleEdit.png)
+ ![SaleReport](screenshots/SaleReport.png)
+ ![GeneralSeting](screenshots/GeneralSeting.png)
+ ![invoice](screenshots/invoice.png)
  
 
 ## Upcoming Features  
