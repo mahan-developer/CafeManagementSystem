@@ -13,15 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessApplicationLayer", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonUtilities", "CommonUtilities\CommonUtilities.csproj", "{0CD13CAC-A22E-42F6-972D-F9C43B2252B3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "screenshots", "screenshots", "{D040DDD7-8F1A-4DD6-B833-08D86CBA9AB4}"
-	ProjectSection(SolutionItems) = preProject
-		..\New folder (2)\GeneralSeting.png = ..\New folder (2)\GeneralSeting.png
-		..\New folder (2)\invoice.png = ..\New folder (2)\invoice.png
-		..\New folder (2)\Sale.png = ..\New folder (2)\Sale.png
-		..\New folder (2)\SaleEdit.png = ..\New folder (2)\SaleEdit.png
-		..\New folder (2)\SaleReport.png = ..\New folder (2)\SaleReport.png
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
