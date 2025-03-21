@@ -15,6 +15,13 @@ A **Windows-based** management system designed for cafés and restaurants to eff
 ✅ **Database Synchronization** – Optionally sync menu data with the **leackerdeal.de** website.  
 ✅ **PayPal Payment Integration** – Planned for future implementation.  
 
+## 🎨 Customizability & Flexibility
+- 🧩 Fully customizable menu: Define your own categories, products, sizes, and icons.
+- 🧾 Invoice personalisation: Change logo, address, footer text, and other invoice elements directly from the settings screen.
+- 🖨️ Dual-printer support: Print two versions of the receipt (e.g., one for customer, one for kitchen) and choose the printer for each from your installed devices.
+- 🔎 Sales history: View, filter, and edit past sales transactions with ease.
+
+
 ## Technologies Used  
 - **C# (.NET Framework)** – Core programming language  
 - **Windows Forms (WinForms)** – UI framework for desktop application  
@@ -50,6 +57,17 @@ Manages **database operations (CRUD)** using ADO.NET and stored procedures. Exam
 2. Open the solution in **Microsoft Visual Studio 2022**.  
 3. Ensure that **SQL Server Express (SQLEXPRESS)** is installed on your system.  
 4. Build and run the application.  
+
+## 🛠️ Installation Experience & Auto Setup
+This application is designed to be installed and run **without requiring technical knowledge**. It automatically checks and configures all the required components:
+
+- 💡 **Automatic SQL Server Express Setup** – If SQL Server is not installed, the app triggers its installation.
+- 🔍 **Self-check for database** – On first run, the application checks whether the database and tables exist.
+- ⚙️ **One-click initialization** – If the database is missing, the app redirects to the settings screen where the user can create the database and default data with a single click.
+- 🚀 **Smooth startup** – After setup, the application restarts and opens the login screen with a default password.
+
+This makes the system **extremely user-friendly**, even for café owners with no IT background.
+
 
 ## Screenshots  
  ![Sale](screenshots/sale.png)
